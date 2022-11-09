@@ -1,0 +1,38 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files
+# pocketbase data
+pocketbase/pb_data
+
+# dependencies
+bobby-hr/node_modules
+bobby-hr/.pnp
+.pnp.js
+
+# testing
+bobby-hr/coverage
+
+# next.js
+bobby-hr/.next/
+bobby-hr/out/
+
+# production
+bobby-hr/build
+
+# misc
+bobby-hr/.DS_Store
+bobby-hr/*.pem
+
+# debug
+bobby-hr/npm-debug.log*
+bobby-hr/yarn-debug.log*
+bobby-hr/yarn-error.log*
+bobby-hr/.pnpm-debug.log*
+
+# local env files
+bobby-hr/.env*.local
+
+# vercel
+bobby-hr/.vercel
+
+# typescript
+bobby-hr/*.tsbuildinfo
+bobby-hr/next-env.d.ts
