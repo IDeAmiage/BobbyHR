@@ -11,6 +11,9 @@ export default function RootLayout({ children }) {
             <Link href="/">
               Home
             </Link>
+            <Link href="/forms">
+              Roles
+            </Link>
           </nav>
           {children}
         </main>
