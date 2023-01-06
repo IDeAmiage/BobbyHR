@@ -1,3 +1,17 @@
+import Link from 'next/link';
+
 export default function HomePage() {
-  return <h1>Home Page</h1>;
+    return (
+        <main>
+            <nav>
+                <Link href="/">
+                    Home
+                </Link>
+                <Link href="/login">
+                    Login
+                </Link>
+            </nav>
+            <h1>Home</h1>
+        </main>
+        );
 }
