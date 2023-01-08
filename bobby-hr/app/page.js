@@ -7,7 +7,7 @@ export default function HomePage() {
                 <Link href="/">
                     Home
                 </Link>
-                <Link href="/login">
+                <Link href="/auth">
                     Login
                 </Link>
             </nav>
