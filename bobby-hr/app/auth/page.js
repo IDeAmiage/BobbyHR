@@ -3,7 +3,7 @@
 import pb from "../util/pocketbase"
 import logout from "../util/auth/authService"
 import { useForm } from "react-hook-form";
-import {redirect} from "next/navigation";
+import { redirect } from "next/navigation";
 import { useRouter } from 'next/router'
 
 const LoginPage = () => {
@@ -26,9 +26,10 @@ const LoginPage = () => {
         pb.authStore.clear();
         window.location.reload();
     }
-    function logUser(data) {
-        const user = login({email: data.email, password: data.password}, false);
-        console.log(user);
+    async function logUser(data) {
+        const user = await login({ email: data.email, password: data.password }, false);
+        // console.log(user);
+        window.location.reload();
     }
 
     if (pb.authStore.isValid) {
@@ -36,11 +37,11 @@ const LoginPage = () => {
     } else {
         return (
             <form onSubmit={handleSubmit(logUser)}>
-                <input placeholder="email" {...register("email")}/>
-                <input type="password" placeholder="password" {...register("password")}/>
+                <input placeholder="email" {...register("email")} />
+                <input type="password" placeholder="password" {...register("password")} />
                 <button type="submit">Log in</button>
             </form>
-            );
+        );
     }
 };
 
