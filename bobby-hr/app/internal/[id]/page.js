@@ -14,7 +14,11 @@ const InternalPage = () => {
         router.push("/auth")
     }
 
-    return (<div><h5>You are connected {user.username}</h5> <button onClick={useLog}>Logout</button></div>)
+    return (
+        <div>
+            <h5>You are connected {user.username}</h5>
+            <button onClick={useLog}>Logout</button>
+        </div>)
 };
 
 export default InternalPage
