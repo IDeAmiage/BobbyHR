@@ -33,3 +33,4 @@ Pour la sécurité de la branche main, il est impossible de merge nos modificati
 ### Branche Dev
 Cette branche est une branche de test permettant de merge nos modifications afin de les tester au lieu de directement tester dans la branche main. Avant chaque merge entre notre branche et celle-ci, il est nécessaire de faire une merge request.
 
+## Test
