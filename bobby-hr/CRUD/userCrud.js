@@ -1,7 +1,8 @@
-const table = "USER";
+import './genericCrud'
+const table = "users";
 
-async function create_user(pb, id, dict){
-    ret_var = create_(pb, table, id, dict);
+async function create_user(pb, dict){
+    ret_var = create_(pb, table, dict);
     return ret_var;
 }
 
