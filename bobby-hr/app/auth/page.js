@@ -1,47 +1,34 @@
 'use client'
 
-import pb from "../util/pocketbase"
-import logout from "../util/auth/authService"
+import { useLogin, useUser } from "../util/auth/authService"
 import { useForm } from "react-hook-form";
-import {redirect} from "next/navigation";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
-    const router = useRouter()
+    const { user, valid }  = useUser()
+    const router = useRouter();
 
-    async function login({ email, password }, isAdmin) {
-        if (isAdmin) {
-            const user = await pb.admins.authWithPassword(email, password);
-            pb.authStore.exportToCookie();
-            return user;
-        } else {
-            const user = await pb.collection('users').authWithPassword(email, password);
-            pb.authStore.exportToCookie();
-            return user;
+    async function useLogUser(data) {
+        const user = await useLogin({email: data.email, password: data.password}, false);
+        console.log(user);
+        if (user) {
+            router.push(`/internal/${user.record.username}`);
+            //router.push(`/internal`);
         }
     }
 
-    async function logout() {
-        pb.authStore.clear();
-        window.location.reload();
-    }
-    function logUser(data) {
-        const user = login({email: data.email, password: data.password}, false);
-        console.log(user);
+    if (user && valid) {
+        router.push(`/internal/${user.username}`);
     }
 
-    if (pb.authStore.isValid) {
-        return (<div><h1>Already logged in</h1><button onClick={logout}>Log out</button></div>);
-    } else {
-        return (
-            <form onSubmit={handleSubmit(logUser)}>
-                <input placeholder="email" {...register("email")}/>
-                <input type="password" placeholder="password" {...register("password")}/>
-                <button type="submit">Log in</button>
-            </form>
-            );
-    }
+    return (
+        <form onSubmit={handleSubmit(useLogUser)}>
+            <input placeholder="email" {...register("email")}/>
+            <input type="password" placeholder="password" {...register("password")}/>
+            <button type="submit">Log in</button>
+        </form>
+    );
 };
 
 export default LoginPage;

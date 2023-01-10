@@ -1,6 +1,6 @@
 import pb from '../pocketbase';
 
-async function login({ email, password }, isAdmin) {
+export async function useLogin({ email, password }, isAdmin) {
     if (isAdmin) {
         const user = await pb.admins.authWithPassword(email, password);
         pb.authStore.exportToCookie();
@@ -12,29 +12,26 @@ async function login({ email, password }, isAdmin) {
     }
 }
 
-async function register({ username, email, password, passwordConfirm, name }) {
+export function useUser() {
+    return {user: pb.authStore.model, valid: pb.authStore.isValid};
+}
+
+export async function useRegister({ username, email, password, passwordConfirm, nom, prenom, promotion}) {
     const data = {
         "username": username,
         "email": email,
         "emailVisibility": true,
         "password": password,
         "passwordConfirm": passwordConfirm,
-        "name": name
+        "nom": nom,
+        "prenom": prenom,
+        "promotion": promotion
     };
     const user = await pb.collection('users').create(data);
     await pb.collection('users').requestVerification('test@example.com');
     return user;
 }
 
-async function logout() {
+export async function useLogout() {
     pb.authStore.clear();
-    window.location.reload();
 }
-
-const authService = {
-    login,
-    register,
-    logout,
-};
-
-export default authService;
