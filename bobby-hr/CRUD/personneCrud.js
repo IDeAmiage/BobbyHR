@@ -1,22 +1,18 @@
-import './genericCrud'
+import {create_, delete_, read_, update_} from "./genericCrud";
 const table = "personne";
 
-async function create_user(pb, dict){
-    ret_var = create_(pb, table, dict);
-    return ret_var;
+async function create_personne(dict){
+    return create_(table, dict);
 }
 
-async function delete_user(pb, table, id){
-    ret_var = delete_(pb, table, id);
-    return ret_var;
+async function delete_personne(table, id){
+    return delete_(table, id);
 }
 
-async function update_user(pb, table, id, dict){
-    ret_var = update_(pb, table, id, dict);
-    return ret_var;
+async function update_personne(table, id, dict){
+    return update_(table, id, dict);
 }
 
-async function read_user(pb, table, id){
-    ret_var = read_(pb, table, id);
-    return ret_var;
+async function read_personne(table, id){
+    return read_(table, id);
 }
