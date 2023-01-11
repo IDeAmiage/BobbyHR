@@ -10,6 +10,9 @@ export default function HomePage() {
                 <Link href="/auth">
                     Login
                 </Link>
+                <Link href="/forms">
+                    Roles
+                </Link>
             </nav>
             <h1>Home</h1>
         </main>
