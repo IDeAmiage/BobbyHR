@@ -4,14 +4,14 @@ import { useLogout, useUser } from "../../util/auth/authService";
 import { useRouter } from 'next/navigation';
 
 const InternalPage = () => {
-    const { user, valid } = useUser()
+    const { user, valid } = useUser();
     const router = useRouter();
     const useLog = () => {
         useLogout().then(_ => router.push("/"));
     }
 
     if (!user || !valid) {
-        router.push("/auth")
+        router.push("/auth");
     }
 
     return (
