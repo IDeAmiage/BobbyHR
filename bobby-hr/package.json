@@ -11,6 +11,7 @@
   "dependencies": {
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
+    "feather-icons": "^4.29.0",
     "next": "13.0.2",
     "pocketbase": "^0.9.1",
     "react": "18.2.0",
