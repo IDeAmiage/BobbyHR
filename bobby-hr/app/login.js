@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import './globals.css'
-export default function HomePage() {
+import "./globals.css"
+
+export default function LoginPage() {
     return (
         <main>
             <h1 className="text-3xl underline">
