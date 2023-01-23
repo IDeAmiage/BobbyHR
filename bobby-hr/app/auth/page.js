@@ -1,20 +1,21 @@
 'use client'
 
-import { useLogin, useUser } from "../util/auth/authService"
+import { useUser } from "../util/auth/authService"
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
+import useLogin from "../util/auth/useLogin";
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
     const { user, valid }  = useUser()
+    const { login, isLoading } = useLogin();
     const router = useRouter();
 
-    async function useLogUser(data) {
-        const user = await useLogin({email: data.email, password: data.password}, false);
+    async function onSubmit(data) {
+        await login({email: data.email, password: data.password})
         console.log(user);
         if (user) {
             router.push(`/internal/${user.record.username}`);
-            //router.push(`/internal`);
         }
     }
 
@@ -23,10 +24,10 @@ const LoginPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(useLogUser)}>
-            <input placeholder="email" {...register("email")}/>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="email" {...register("email")}/>
             <input type="password" placeholder="password" {...register("password")}/>
-            <button type="submit">Log in</button>
+            <button type="submit" disabled={isLoading}>Log in</button>
         </form>
     );
 };

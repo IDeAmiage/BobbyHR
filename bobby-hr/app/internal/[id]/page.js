@@ -5,19 +5,17 @@ import { useRouter } from 'next/navigation';
 
 const InternalPage = () => {
     const { user, valid } = useUser();
+    const logout = useLogout();
     const router = useRouter();
-    const useLog = () => {
-        useLogout().then(_ => router.push("/"));
-    }
-
-    if (!user || !valid) {
+    console.log(user);
+    if (!valid) {
         router.push("/auth");
     }
 
     return (
         <div>
             <h5>You are connected {user.username}</h5>
-            <button onClick={useLog}>Logout</button>
+            <button onClick={logout}>Logout</button>
         </div>)
 };
 
