@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,9 +12,7 @@
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
     "next": "13.0.2",
-    "pocketbase": "^0.9.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.41.5"
+    "react-dom": "18.2.0"
   }
 }
