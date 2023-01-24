@@ -33,5 +33,5 @@ export async function useRegister({ username, email, password, passwordConfirm, 
 }
 
 export async function useLogout() {
-    pb.authStore.clear();
+
 }
