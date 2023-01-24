@@ -36,3 +36,10 @@ bobby-hr/.vercel
 # typescript
 bobby-hr/*.tsbuildinfo
 bobby-hr/next-env.d.ts
+
+.idea/
+.fleet/
+
+.DS_Store
+package-lock.json
+.vscode/
