@@ -15,59 +15,6 @@ a {
   box-sizing: border-box;
 }
 
-button[type="submit"],
-input[type="submit"] {
-  background: #63535b;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: 40px;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 100;
-  letter-spacing: 10px;
-}
-
-button[type="submit"]:hover,
-input[type="submit"]:hover {
-  background: #876c79;
-}
-
-.wish {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.choice {
-  margin-bottom: 20px;
-}
-
-.choicee {
-  width: 100%;
-  height: 25px;
-}
-.wish1 {
-  background-color: #e9e6e4;
-  border-radius: 5px;
-  display: block;
-  width: 30%;
-}
-
-.wish2 {
-  background-color: #e9e6e4;
-  border-radius: 5px;
-  display: block;
-  width: 30%;
-}
-.wish3 {
-  background-color: #e9e6e4;
-  border-radius: 5px;
-  display: block;
-  width: 30%;
-}
-
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
