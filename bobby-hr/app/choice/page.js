@@ -11,13 +11,13 @@ export default function RoleForm() {
   </h5>
 
   <div className="flex items-start space-x-7 mt-4 place-content-center ">
-    <div className="rounded-t bg-brown-yellow block text-center w-1/6 ">
+    <div className="rounded-t bg-white_accent_bobby block text-center w-1/6 ">
       <div className="mt-3">
       <label className="text-xl font-bold" > Voeux 1 </label>
       </div>
-      <div className="text-center grid justify-items-stretch border-t border-brown-purple mt-3 ">
+      <div className="text-center grid justify-items-stretch border-t border-brown_bobby mt-3 ">
         <p className="mb-2 mt-5 font-medium">Projet :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm">
           <option></option>
           <option value="EMC"> EMC </option>
           <option value="BB"> Bobby HR </option>
@@ -27,7 +27,7 @@ export default function RoleForm() {
           <option value="Chapo"> Prospection </option>
         </select>
         <p className="mb-2 font-medium">Role :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm">
           <option></option>
           <option value="PO"> Product Owner </option>
           <option value="SM"> Scrum Master </option>
@@ -36,13 +36,13 @@ export default function RoleForm() {
         </select>
       </div>
     </div>
-    <div className="rounded-t bg-brown-yellow block text-center w-1/6">
+    <div className="rounded-t bg-white_accent_bobby block text-center w-1/6">
     <div className="mt-3">
       <label className="text-xl font-bold" > Voeux 2 </label>
       </div>
-      <div className="text-center grid justify-items-stretch border-t border-brown-purple mt-3 ">
+      <div className="text-center grid justify-items-stretch border-t border-brown_bobby mt-3 ">
         <p className="mb-2 mt-5 font-medium">Projet :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm">
           <option></option>
           <option value="EMC"> EMC </option>
           <option value="BB"> Bobby HR </option>
@@ -52,7 +52,7 @@ export default function RoleForm() {
           <option value="Chapo"> Prospection </option>
         </select>
         <p className="mb-2 font-medium">Role :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm ">
           <option></option>
           <option value="PO"> Product Owner </option>
           <option value="SM"> Scrum Master </option>
@@ -61,13 +61,13 @@ export default function RoleForm() {
         </select>
       </div>
     </div>
-    <div className="rounded-t bg-brown-yellow block text-center w-1/6">
+    <div className="rounded-t bg-white_accent_bobby block text-center w-1/6">
     <div className="mt-3">
       <label className="text-xl font-bold" > Voeux 3 </label>
       </div>
-      <div className="text-center grid justify-items-stretch border-t border-brown-purple mt-3 ">
+      <div className="text-center grid justify-items-stretch border-t border-brown_bobby mt-3 ">
         <p className="mb-2 mt-5 font-medium">Projet :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm">
           <option></option>
           <option value="EMC"> EMC </option>
           <option value="BB"> Bobby HR </option>
@@ -77,7 +77,7 @@ export default function RoleForm() {
           <option value="Chapo"> Prospection </option>
         </select>
         <p className="mb-2 font-medium">Role :</p>
-        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm focus:outline-brown-purple">
+        <select className="mb-4 block py-1 bg-white border border-slate-300 rounded-md text-m shadow-sm">
           <option></option>
           <option value="PO"> Product Owner </option>
           <option value="SM"> Scrum Master </option>
@@ -87,6 +87,6 @@ export default function RoleForm() {
       </div>
     </div>
   </div>
-  <button className="justify-self-center mt-5 w-32 h-10 rounded-lg bg-brown-purple font-medium text-white hover:bg-brown-purple2 focus:outline-none focus:ring focus:ring-brown-purple " type="submit">Valider</button>
+  <button className="justify-self-center mt-5 w-32 h-10 rounded-lg bg-brown_bobby font-medium text-white hover:bg-brown_bobby focus:outline-none focus:ring focus:ring-brown_bobby " type="submit">Valider</button>
 </form>
   );}
