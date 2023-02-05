@@ -1,13 +1,18 @@
 import "../globals.css" 
+import Image from 'next/image'
+import cgrpic from '../assets/cgr.jpg'
+import bobbypic from '../assets/bobby.jpg'
+import emcpic from '../assets/emc.jpg'
+import teachingpic from '../assets/teaching.jpg'
 
 export default function CV() {
   return (
     <div className="mt-20 grid justify-items-stretch place-content-center">
-        <h1 className="text-4xl text-center text-brown_bobby">Curriculum Vitae de l'entreprise Idea </h1>
-        <div className="text-center text-2xl mt-10">
+        <h1 className="text-4xl text-center text-purple_bobby border-b border-brown_bobby">Curriculum Vitae de l'entreprise Idea </h1>
+        <div className="text-center items-center text-2xl mt-10">
             <h1 className="text-2xl font-medium">Partie présentation de l'entreprise</h1>
            {/* Partie de présentation de IdeA, quel est l'objectif de notre entreprise, l'utilité, voir d'autres exemples de présentation d'entreprise */}
-           <p>...</p> 
+           <p>...</p>
         </div>
 
         {/* <!-- Partie présentation des projets --!> */}
@@ -16,7 +21,8 @@ export default function CV() {
         <div className="flex items-start space-x-7 mt-4 place-content-center">
             <div className="relative w-80 h-60 rounded-2xl text-black overflow-hidden cursor-pointer transition-all duration-700 card ease-in-out hover:scale-110">
                 <div className="absolute inset-0 w-full h-full justify-center items-center flex bg-white_accent_bobby transition-all duration-100 delay-200 z-20 hover:opacity-0">
-                    <h3 className="text-xl ">Enseignant</h3>
+                    {/* <h3 className="text-xl ">Enseignant</h3> */}
+                    <Image src={teachingpic} alt="Picture of enseignant"/>
                 </div>
                 <div className="absolute inset-0 w-full h-full flex bg-white_accent_bobby transition-all z-10 card-back">
                     <div className="text-center mt-6">
@@ -29,7 +35,8 @@ export default function CV() {
             </div>
             <div className="relative w-80 h-60 rounded-2xl text-black overflow-hidden cursor-pointer transition-all duration-700 card ease-in-out hover:scale-110">
                 <div className="absolute inset-0 w-full h-full justify-center items-center flex bg-white_accent_bobby transition-all duration-100 delay-200 z-20 hover:opacity-0">
-                    <h3 className="text-xl">Bobby HR</h3>
+                    {/* <h3 className="text-xl">Bobby HR</h3> */}
+                    <Image src={bobbypic} alt="Picture of bobbyHR"/>
                 </div>
                 <div className="absolute inset-0 w-full h-full flex bg-white_accent_bobby transition-all z-10 card-back">
                     <div className="text-center mt-8">
@@ -43,7 +50,8 @@ export default function CV() {
             <div className="relative w-80 h-60 rounded-2xl text-black overflow-hidden cursor-pointer transition-all duration-700 card ease-in-out hover:scale-110"> 
                 <div className="absolute inset-0 w-full h-full justify-center items-center flex bg-white_accent_bobby transition-all duration-100 delay-200 z-20 hover:opacity-0">
                     <div>
-                        <h3 className="text-xl">EMC</h3>
+                        {/* <h3 className="text-xl">EMC</h3> */}
+                        <Image src={emcpic} alt="Picture of EMC"/>
                     </div>
                 </div>
                 <div className="absolute inset-0 w-full h-full flex bg-white_accent_bobby transition-all z-10 card-back"> 
@@ -58,7 +66,8 @@ export default function CV() {
             <div className="relative w-80 h-60 rounded-2xl text-black overflow-hidden cursor-pointer transition-all duration-700 card ease-in-out hover:scale-110"> 
                 <div className="absolute inset-0 w-full h-full justify-center items-center flex bg-white_accent_bobby transition-all duration-100 delay-200 z-20 hover:opacity-0">
                     <div>
-                        <h3 className="text-xl">CGR Blagnac</h3>
+                        {/* <h3 className="text-xl absolute text-5xl text-white">CGR Blagnac</h3> */}
+                        <Image src={cgrpic} alt="Picture of the cinema"/>
                     </div>
                 </div>
                 <div className="absolute inset-0 w-full h-full flex bg-white_accent_bobby transition-all z-10 card-back">

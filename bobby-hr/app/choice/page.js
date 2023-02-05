@@ -87,6 +87,6 @@ export default function RoleForm() {
       </div>
     </div>
   </div>
-  <button className="justify-self-center mt-5 w-32 h-10 rounded-lg bg-brown_bobby font-medium text-white hover:bg-brown_bobby focus:outline-none focus:ring focus:ring-brown_bobby " type="submit">Valider</button>
+  <button className="justify-self-center mt-5 w-32 h-10 rounded-lg bg-brown_bobby font-medium text-white hover:bg-purple_bobby focus:outline-none focus:ring focus:ring-brown_bobby " type="submit">Valider</button>
 </form>
   );}
