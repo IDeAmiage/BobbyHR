@@ -16,7 +16,8 @@ module.exports = {
         white_accent_bobby: "#E9E6E4",
         gray_bobby: "#CACACA",
         black_bobby: "#121212",
-        brown_bobby: "#63535B"
+        brown_bobby: "#63535B",
+        purple_bobby: "#816C76"
       },
       fontFamily: {
         Playfair: ["Playfair Display"]
