@@ -14,7 +14,6 @@ export default function HomePage() {
                 Hello world!
             </h1>
             <i data-feather="user"></i>
-
         </main>
     );
 }
