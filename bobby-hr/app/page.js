@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import './globals.css'
-import 'feather-icons'
 
 export default function HomePage() {
   return (

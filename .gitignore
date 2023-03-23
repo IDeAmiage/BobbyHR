@@ -41,3 +41,6 @@ bobby-hr/next-env.d.ts
 .DS_Store
 .fleet/
 
+.DS_Store
+package-lock.json
+.vscode/
