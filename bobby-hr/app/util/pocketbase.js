@@ -1,4 +1,5 @@
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase("http://129.151.235.245:8090/");
+const pb = new PocketBase('https://idea-student.works');
+
 export default pb;

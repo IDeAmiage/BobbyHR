@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-head-element */
+import Providers from './providers'
 
 export default function RootLayout({ children }) {
   return (
@@ -10,7 +11,7 @@ export default function RootLayout({ children }) {
         <meta name="author" content="BobbyHR"/>
       </head>
       <body>
-          {children}
+      <Providers>{children}</Providers>
       </body>
     </html>
   );
