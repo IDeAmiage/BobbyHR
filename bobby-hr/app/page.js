@@ -20,7 +20,7 @@ export default function HomePage() {
             <h1 className="text-5xl font-bold font-serif mb-3"> IDeA </h1>
             <h2 className='text-4xl font-medium font-serif '>Data & Compute Science</h2>
             <h5 className='text-2xl font-serif font-extralight text-gray_bobby'>Startup toulousaine spécialisée dans le SI et traitement de données</h5>
-        </div> 
+        </div>
         </main>
   );
 }
