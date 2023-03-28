@@ -15,3 +15,9 @@ export async function update_(table, id, dict){
 export async function read_(table, id){
     return await pb.collection(table).getOne(id, {});
 }
+
+export async function read_all(table){
+    return await pb.collection(table).getFullList(200, {
+        sort: '-created',
+    });
+}
