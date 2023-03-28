@@ -1,4 +1,4 @@
-export function deleteUserFromData({ userFirstName, userLastName }, data) {
+export function deleteUserFromData(useriD, data) {
     var list_choix = ['choix1', 'choix2', 'choix3'];
     var list_role = ['SM', 'PO', 'dev'];
 
@@ -7,7 +7,7 @@ export function deleteUserFromData({ userFirstName, userLastName }, data) {
             for (const choix in list_choix) {
                 let item_to_remove = [];
                 for (const user in data[key][choix]) {
-                    if (user['userName'] == userFirstName && user['lastName'] == userLastName) {
+                    if (user['useriD'] == useriD) {
                         item_to_remove.push(data[key][choix].indexof(user));
                     }
                 }
@@ -20,7 +20,7 @@ export function deleteUserFromData({ userFirstName, userLastName }, data) {
                 let item_to_remove = [];
                 for (const user in data[key][choix]) {
                     for (const role in list_role) {
-                        if (user['userName'] == userFirstName && user['lastName'] == userLastName) {
+                        if (user['useriD'] == useriD) {
                             item_to_remove.push(data[key][choix][role].indexof(user));
                         }
                     }
