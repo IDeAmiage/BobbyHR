@@ -6,7 +6,6 @@ export default function HomePage() {
       <main>
           <nav>
               <Link href="/">Home</Link>
-              <Link href="/login">Login</Link>
               <Link href="/auth">Auth</Link>
               <Link href="/choice">Choix</Link>
               <Link href="/cv">CV</Link>
