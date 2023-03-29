@@ -6,7 +6,6 @@ import "../../globals.css";
 function RoleForm() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    console.log(errors);
     async function onSubmit(data) {
         //login({email: data.email, password: data.password});
         console.log(data);
@@ -15,39 +14,42 @@ function RoleForm() {
 
     const users = [
         {
-            name: "Eddie DePetbro",
-            picture: "https://fancytailwind.com/static/profile10-9e05bd5638c669c34c11cb0462d95aa9.jpg",
-            role: "Développeur",
-            online: true,
-            link: "#userProfile1"
+            role: "Développeur"
         },
         {
-            name: "Eddie DePetbro",
-            picture: "https://fancytailwind.com/static/profile10-9e05bd5638c669c34c11cb0462d95aa9.jpg",
-            role: "Scrum Master",
-            online: true,
-            link: "#userProfile1"
+            role: "Scrum Master"
         }
-    ]
+    ];
+
+    const project = [
+        {
+            name: "EMC"
+        },
+        {
+            name: "Bobby"
+        }
+    ];
 
     return (
     <>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col min-h-screen justify-start items-center bg-white_background_bobby">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col min-h-screen justify-start items-center bg-white_background_bobby gap-2">
             <div className="py-8">
                 <h1 className="text-7xl font-Playfair font-extrabold text-black_bobby">Choix rôles</h1>
             </div>
-            <select {...register("Projet", { required: true })}>
-                <option value="EMC">EMC</option>
+            <select {...register("projet", { required: true })}>
+                {project.map(project => (
+                    <option key={project.name} value={project.name}>{project.name}</option>
+                ))}
             </select>
             <ul className="flex flex-col">
                 {users.map(user => (
                     <li key={user.role} className="border-b-2 border-gray-100">
                         <div className={`py-5 px-4 flex justify-start border-transparent bg-transparent gap-4 items-center`}>
-                            <div className={``}>
+                            <div className={`pr-4 grow`}>
                                 {user.role}
                             </div>
                             <div className="sm:col-span-2 sm:col-start-1">
-                                <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label className="block text-sm font-medium leading-6 text-gray-900">
                                     Nombre de M1
                                 </label>
                                 <div className="mt-2">
@@ -59,9 +61,8 @@ function RoleForm() {
                                     />
                                 </div>
                             </div>
-
                             <div className="sm:col-span-2">
-                                <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label className="block text-sm font-medium leading-6 text-gray-900">
                                     Nombre de M2
                                 </label>
                                 <div className="mt-2">
@@ -78,19 +79,9 @@ function RoleForm() {
                 ))
                 }
             </ul>
-            <button type="submit">Envoyer</button>
+            <button className="px-12 py-2 bg-brown_bobby rounded-lg font-Playfair text-white_background_bobby text-lg font-medium hover:scale-105" type="submit">Envoyer</button>
         </form>
     </>);
 }
 
 export default RoleForm;
-
-//Avec rôle, projet et nombre de M1 & M2 attendu
-
-// <form>
-//   <label for="fname">First name:</label><br>
-//   <input type="text" id="fname" name="fname" value="John"><br>
-//   <label for="lname">Last name:</label><br>
-//   <input type="text" id="lname" name="lname" value="Doe"><br><br>
-//   <input type="submit" value="Submit">
-//   </form>
