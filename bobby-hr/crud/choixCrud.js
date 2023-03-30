@@ -5,14 +5,18 @@ async function create_choix(dict){
     return create_(table, dict);
 }
 
-async function delete_choix(table, id){
+async function delete_choix(id){
     return delete_(table, id);
 }
 
-async function update_choix(table, id, dict){
+async function update_choix(id, dict){
     return update_(table, id, dict);
 }
 
-async function read_choix(table, id){
+async function read_choix(id){
     return read_(table, id);
+}
+
+async function read_all_choix() {
+    return read_all(table);
 }
