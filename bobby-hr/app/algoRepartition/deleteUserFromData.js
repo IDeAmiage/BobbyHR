@@ -1,32 +1,19 @@
-export function deleteUserFromData(useriD, data) {
-    var list_choix = ['choix1', 'choix2', 'choix3'];
-    var list_role = ['SM', 'PO', 'dev'];
-
-    for (const key in data) {
-        if (key == 'Chapo') {
+export function deleteUserFromData(userList, data) {
+    var list_choix = ['Choix 1', 'Choix 2', 'Choix 3'];
+    for (const userIndex in userList) {
+        const userID = userList[userIndex]
+        for (const project in data) {
             for (const choix in list_choix) {
                 let item_to_remove = [];
-                for (const user in data[key][choix]) {
-                    if (user['useriD'] == useriD) {
-                        item_to_remove.push(data[key][choix].indexof(user));
-                    }
-                }
-                for (i = item_to_remove.length - 1; i >= 0; i--) {
-                    data[key][choix].splice(i, 1);
-                }
-            }
-        } else {
-            for (const choix in list_choix) {
-                let item_to_remove = [];
-                for (const user in data[key][choix]) {
-                    for (const role in list_role) {
-                        if (user['useriD'] == useriD) {
-                            item_to_remove.push(data[key][choix][role].indexof(user));
+                for (const role in data[project][list_choix[choix]]) {
+                    for (const user in data[project][list_choix[choix]][role]) {
+                        if (data[project][list_choix[choix]][role][user] == userID) {
+                            item_to_remove.push(user);
                         }
                     }
-                }
-                for (i = item_to_remove.length - 1; i >= 0; i--) {
-                    data[key][choix][role].splice(i, 1);
+                    for (i = item_to_remove.length - 1; i >= 0; i--) {
+                        data[project][list_choix[choix]][role].splice(item_to_remove[i], 1);
+                    }
                 }
             }
         }

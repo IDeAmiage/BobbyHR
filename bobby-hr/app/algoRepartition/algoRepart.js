@@ -1,53 +1,52 @@
+import deleteUserFromData from './deleteUserFromData';
 
-dico = { 'Projet 1': { 'Choix 1': { 'SM': ['Camille Mirio','Augustin'], 'PO': ['Camille Cabri'], 'DEV': ['Hind Naoui','PP'] }, 'Choix 2': { 'SM': ['Ziona'], 'PO': ['Hugo'], 'DEV': ['Julien','Pal'] },'Choix 3':{'SM':['Leo'],'PO':['Margaux'],'DEV':['Tessa']} } }
-
-function choix(dict) {
-    resultat = { 'Projet 1': {'SM': [], 'PO': [], 'DEV': []}}
-    for (var key in dict) {
-        if (dict[key]['Choix 1']['SM'].length == 1) {
-            resultat[key]['SM'] = dict[key]['Choix 1']['SM'][0]
+export function choix(dict) {
+    var list_choix = ['Choix 1', 'Choix 2', 'Choix 3'];
+    // Dictionnaire de retour doit être créé de manière générique
+    resultat = {}
+    for (var project in dict) {
+        userToRemove = [];
+        resultat[project] = {}
+        for (const role in dict[project][list_choix[0]]) {
+            const nbPlace = dict[project]["metadata"][role];
+            resultat[project][role] = []
+            if (dict[project][list_choix[0]][role].length == nbPlace) {
+                userToRemove = userToRemove.concat(dict[project][list_choix[0]][role])
+                resultat[project][role] = dict[project][list_choix[0]][role].slice()
+            }
         }
-        if (dict[key]['Choix 1']['PO'].length == 1) {
-            resultat[key]['PO'] = dict[key]['Choix 1']['PO'][0]
-        }
-        if (dict[key]['Choix 1']['DEV'].length == 1) {
-            resultat[key]['DEV'] = dict[key]['Choix 1']['DEV'][0]
-        }
-        if (dict[key]['Choix 1']['SM'].length != 1) {
-            const c1 = dict[key]['Choix 1']['SM']
-            const c2 = dict[key]['Choix 2']['SM']
-            const c3 = dict[key]['Choix 3']['SM']
-            const L1= c1.concat(c1).concat(c1).concat(c2).concat(c2).concat(c3)
-            var rand = Math.floor(Math.random()*L1.length)
-            resultat[key]['SM'] = L1[rand]
-        }
-        if (dict[key]['Choix 1']['PO'].length != 1) {
-            const c1 = dict[key]['Choix 1']['PO']
-            const c2 = dict[key]['Choix 2']['PO']
-            const c3 = dict[key]['Choix 3']['PO']
-            const L1= c1.concat(c1).concat(c1).concat(c2).concat(c2).concat(c3)
-            var rand = Math.floor(Math.random()*L1.length)
-            resultat[key]['PO'] = L1[rand]
-        }
-        if (dict[key]['Choix 1']['DEV'].length != 1) {
-            const c1 = dict[key]['Choix 1']['DEV']
-            const c2 = dict[key]['Choix 2']['DEV']
-            const c3 = dict[key]['Choix 3']['DEV']
-            const L1= c1.concat(c1).concat(c1).concat(c2).concat(c2).concat(c3)
-            var rand = Math.floor(Math.random()*L1.length)
-            resultat[key]['DEV'] = L1[rand]
-
-        }
-
+        deleteUserFromData(userToRemove, dict)
+        // Fonctionne si pas Chapo        
     }
-    for (var key in resultat){
-        p1=resultat[key]['SM']
-        p2=resultat[key]['PO']
-        p3=resultat[key]['DEV']
-        
+
+    for (const project in dict) {
+        for (const role in dict[project][list_choix[0]]) {
+
+            const nbRole = dict[project]["metadata"][role];
+
+            if (resultat[project][role].length != nbRole) {
+                if(!Object.keys(resultat[project]).includes(role)){
+                    resultat[project][role] = []
+                }
+                var L1 = []
+                for (var i = 0; i < list_choix.length; i++) {
+                    for (let j = 3; j > i; j--) {
+                        L1 = L1.concat(dict[project][list_choix[i]][role])
+                    }
+                }
+                for (let i = 0; i < nbRole && L1.length != 0; i++) {
+                    var rand = Math.floor(Math.random() * L1.length)
+                    const user = L1[rand]
+                    resultat[project][role].push(user)
+                    deleteUserFromData([user], dict)
+                    let index = L1.indexOf(user)
+                    while (index != -1) {
+                        L1.splice(index, 1)
+                        index = L1.indexOf(user)
+                    }
+                }
+            }
+        }
     }
-    console.log(dict)
     return resultat;
 }
-
-console.log(choix(dico))
