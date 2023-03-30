@@ -5,7 +5,6 @@ import { useFormContext } from 'react-hook-form';
 
 export default function Projects({projects}) {
     const { register } = useFormContext();
-    console.log(projects)
 
     return (
         <select {...register("projet", { required: true })}>

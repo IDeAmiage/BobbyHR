@@ -6,13 +6,12 @@ import { read_all_role } from './../../../crud/roleCrud'
 
 export default function Roles({roles}) {
     const { register } = useFormContext();
-    console.log(roles)
 
     const users = [{"role": "Dev"}]
 
     return (
         <ul className="flex flex-col">
-            {users.map(user => (
+            {roles.map(user => (
                 <li key={user.role} className="border-b-2 border-gray-100">
                     <div className={`py-5 px-4 flex justify-start border-transparent bg-transparent gap-4 items-center`}>
                         <div className={`pr-4 grow`}>

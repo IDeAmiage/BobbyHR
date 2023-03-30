@@ -1,35 +1,24 @@
-import Forms from "./forms";
 import pb from './../../util/pocketbase'
 
 async function getRoles() {
-    try {
-        const records = await pb.collection('role').getFullList();
-        console.log(records)
-        return records;
-    } catch (e) {
-        console.log(e);
-    }
-    return [];
+    return await pb.collection('role').getFullList(200, {})
 }
 
 async function getProject() {
-    try {
-        const records = await pb.collection('projet').getFullList();
-        console.log(records)
-        return records;
-    } catch (e) {
-        console.log(e);
-    }
-    return [];
+    return await pb.collection('projet').getFullList(200, {});
 }
 
 async function RoleForms() {
-    const roles = await getRoles();
-    const projects = await getProject();
+    const rolesData = getRoles();
+    const projectsData = getProject();
+
+    const [roles, projects] = await Promise.all([rolesData, projectsData]);
+
     console.log(roles)
+    console.log(projects)
 
     return (
-    <Forms roles={roles} projects={projects}/>
+        <h1>Roles</h1>
     );
 }
 
