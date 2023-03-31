@@ -38,6 +38,7 @@ bobby-hr/*.tsbuildinfo
 bobby-hr/next-env.d.ts
 
 .idea/
+.DS_Store
 .fleet/
 
 .DS_Store
