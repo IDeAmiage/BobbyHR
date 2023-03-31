@@ -1,4 +1,5 @@
 import pb from '../app/util/pocketbase'
+pb.autoCancellation(false);
 
 export async function create_(table, dict){
     return pb.collection(table).create(dict);
@@ -14,4 +15,9 @@ export async function update_(table, id, dict){
 
 export async function read_(table, id){
     return await pb.collection(table).getOne(id, {});
+}
+
+export async function read_all(table){
+    return await pb.collection(table).getFullList(200, {
+    });
 }
