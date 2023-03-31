@@ -8,7 +8,7 @@ import welcome from '../assets/welcome.jpeg'
 
 export default function AccueilPage() {
   return (
-      <main>
+      <main className="bg-white_background_bobby flex flex-col">
         <nav>
             <Link href="/">Home</Link>
             <Link href="/login">Login</Link>
@@ -16,47 +16,67 @@ export default function AccueilPage() {
             <Link href="/choice">Choix</Link>
             <Link href="/cv">CV</Link>
         </nav>
-        <div className='flex justify-center'>
-            <Image className='h-35 rounded-2xl w-40 bg-white_accent_bobby ' src={logo} alt="logo"/>
-        </div>
-        <div className='grid justify-items-center mt-5'>
-            <h1 className="text-5xl font-bold font-serif mb-3"> IDeA </h1>
-            <h2 className='text-4xl font-medium font-serif '>Data & Compute Science</h2>
-            <h5 className='text-2xl font-serif font-extralight text-gray_bobby'>Startup toulousaine spécialisée dans le SI et traitement de données</h5>
-        </div> 
+
         <br/>
-        <div class='py-8 bg-[url("../assets/welcome.jpeg")]'>
-            <h1 className="place-self_center text-5xl justify-items-center font-bold font-serif mb-3 text-center"> Bienvenue Ziona !</h1>
+
+        <div className="py-8 relative">
+            <Image class="w-full" src={welcome} alt="Bienvenue"/>
+            <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white place-self_center text-5xl justify-items-center font-bold font-serif mb-3 text-center max-sm:text-3xl"> Bienvenue Ziona !</h1>
         </div>
 
-        <div class="font-['PlayFair Display Black']">
-            <div class="grid grid-cols-3 gap-4 text-center">
-                <div class="bg-[#E9E6E4] text-[#63535B] rounded-xl">
-                    <div class="pt-1">PROJET</div>
-                    <div class="py-4 text-3xl">Bobby HR</div>
+        <div class="font-Playfair">
+
+            <div class="grid grid-cols-3 gap-4 text-center mx-6">
+                <div class="bg-[#E9E6E4] text-[#63535B] rounded-xl flex-col">
+                    <div class="pt-1 pt-2">PROJET</div>
+                    <div class="py-4 text-3xl font-semibold max-sm:text-2xl">Bobby HR</div>
                 </div>
                 <div class="bg-[#63535B] text-[#E9E6E4] rounded-xl">
-                    <div class="pt-1">PERIODE</div>
-                    <div class="py-4 text-3xl">4</div>
+                    <div class="pt-1 pt-2">SPRINT</div>
+                    <div class="py-4 text-3xl font-semibold max-sm:text-2xl">4</div>
                 </div>
                 <div class="bg-[#CACACA] text-[#63535B] rounded-xl">
-                    <div class="pt-1">RÔLE</div>
-                    <div class="py-4 text-3xl">SM</div>
+                    <div class="pt-1 pt-2">RÔLE</div>
+                    <div class="py-4 text-3xl font-semibold max-sm:text-2xl">SM</div>
                 </div>
             </div>
+
             <div class="pt-11">
-                <div>MES TÂCHES</div>
-                <div>
-                    <tr>
-                        <td>EN COURS</td>
-                        <td>DUREE ESTIMEE</td>
-                        <td>COMMENTAIRES</td>
-                    </tr>
+                <div class="bg-[#E9E6E4] text-[#63535B] text-2xl rounded-xl font-semibold pl-6"> MES TÂCHES </div>
+                <div class="">
+                    <table class ="border-collapse border border-slate-500 bg-[#CACACA] w-full">
+                        <thead class="text-[#63535B] text-lg">
+                            <tr>
+                                <th class="border border-slate-600 py-1.5 px-5 font-normal">EN COURS</th>
+                                <th class="border border-slate-600 py-1.5 px-5 font-normal">DUREE ESTIMEE</th>
+                                <th class="border border-slate-600 py-1.5 px-5 font-normal">COMMENTAIRES</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white font-thin">
+                            <tr>
+                                <td class="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
+                                <td class="border border-slate-600 py-1.5 px-5">7</td>
+                                <td class="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
+                                <td class="border border-slate-600 py-1.5 px-5">7</td>
+                                <td class="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
+                                <td class="border border-slate-600 py-1.5 px-5">7</td>
+                                <td class="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <footer></footer>
+        <footer>
+
+        </footer>
         </main>
   );
 }
