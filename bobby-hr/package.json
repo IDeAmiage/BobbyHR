@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
     "feather-icons": "^4.29.0",
@@ -17,7 +18,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
-    "react-hook-form": "^7.41.5"
+    "react-hook-form": "^7.41.5",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",

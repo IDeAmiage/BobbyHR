@@ -1,7 +1,7 @@
 import {create_, delete_, read_, update_, read_all} from "./genericCrud";
 const table = "role";
 
-async function create_role(dict){
+export async function create_role(dict){
     return create_(table, dict);
 }
 
