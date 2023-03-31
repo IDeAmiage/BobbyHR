@@ -4,8 +4,8 @@ export function deleteUserFromData(userList, data) {
         const userID = userList[userIndex]
         for (const project in data) {
             for (const choix in list_choix) {
-                let item_to_remove = [];
                 for (const role in data[project][list_choix[choix]]) {
+                    let item_to_remove = [];
                     for (const user in data[project][list_choix[choix]][role]) {
                         if (data[project][list_choix[choix]][role][user] == userID) {
                             item_to_remove.push(user);
