@@ -5,13 +5,12 @@ import { useFormContext } from 'react-hook-form';
 
 export default function Projects({projects}) {
     const { register } = useFormContext();
-
+    
     return (
         <select {...register("projet", { required: true })}>
-            {Object.keys(projects).forEach(project => {
-                <option key={project.nom} value={project.nom}>{project.nom}</option>
-                console.log(project.nom)
-            })}
+            {JSON.parse(projects).map(project => (
+                <option key={project.id} value={project.id}>{project.nom}</option>
+            ))}
         </select>
     );
 }
