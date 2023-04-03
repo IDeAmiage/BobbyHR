@@ -1,4 +1,7 @@
 # BobbyHR
+<p align="center">
+  <img alt="bobbyhrlogo" src="https://user-images.githubusercontent.com/78478805/229528159-ee8aea43-5620-48cb-986f-26ef55ac11f1.png">
+</p>
 
 BobbyHR is a web application that allows you :
 - to have a first page of contact with your client.
