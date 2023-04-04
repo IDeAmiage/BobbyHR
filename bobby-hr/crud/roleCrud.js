@@ -17,6 +17,6 @@ export async function read_role(id){
     return read_(table, id);
 }
 
-export async function read_all_role(){
+export async function read_all_role() {
     return read_all(table);
 }
