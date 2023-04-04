@@ -33,24 +33,24 @@ export default function CV() {
                 <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
                 <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
                 </button>
             </div>
             </div>
         </div>
-        <a name = "haut"></a>
+        <a name="haut"></a>
         <h1 className="text-4xl text-center text-purple_bobby font-bold">Curriculum Vitae de l'entreprise Idea </h1><br/>
         <p className="text-center"></p>
         <div className="text-center items-center text-2xl mt-10">
-            <a name = "presentation"></a>
+            <a name="presentation"></a>
             <h1 className="text-3xl text-center text-purple_bobby font-bold">Présentation de l'entreprise</h1>
             <p>Startup créée par des étudiants en master MIAGE, parcours IDA à l'Université Capitole de Toulouse. <br/> Nous traitons des sujets liés aux Système d'informations, le BIG DATA et le traitement de données.</p><br/>
         </div>
-        <a name = "projets"></a>
+        <a name="projets"></a>
         <h1 className="text-3xl text-center text-purple_bobby font-bold">Présentation des projets</h1><br/>
         <div class="flex flex-wrap justify-center">
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 p-2">
@@ -132,7 +132,7 @@ export default function CV() {
                 <h1 className="text-3xl text-center text-purple_bobby font-bold">Nos compétences</h1>
                 <p>SQL, Python, java, javascript, powerBI</p> 
             </div><br/>
-            <div justify-items-center>
+            <div className="justify-items-center">
                 <a name = "contact"></a>
                 <h1 className="text-3xl text-center text-purple_bobby font-bold">Retrouvez-nous!</h1>
                 <div class="flex items-stretch">

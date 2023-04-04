@@ -44,7 +44,7 @@ export default function AccueilPage() {
             <div class="pt-11">
                 <div class="bg-[#E9E6E4] text-[#63535B] text-2xl rounded-xl font-semibold pl-6"> MES TÂCHES </div>
                 <div class="">
-                    <table class ="border-collapse border border-slate-500 bg-[#CACACA] w-full">
+                    <table className="border-collapse border border-slate-500 bg-[#CACACA] w-full">
                         <thead class="text-[#63535B] text-lg">
                             <tr>
                                 <th class="border border-slate-600 py-1.5 px-5 font-normal">EN COURS</th>

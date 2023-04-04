@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import './globals.css'
+import Link from 'next/link';
 import Image from 'next/image'
 import logo from './assets/logo2.png'
 
@@ -12,6 +12,7 @@ export default function HomePage() {
               <Link href="/choice">Choix</Link>
               <Link href="/cv">CV</Link>
               <Link href="/editionRoles">Editer</Link>
+              <Link href="/internal">Internal</Link>
           </nav>
           <div className='flex justify-center'>
             <Image className='h-35 rounded-2xl w-40 bg-white_accent_bobby ' src={logo} alt="logo"/>
