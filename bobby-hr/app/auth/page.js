@@ -20,6 +20,7 @@ const LoginPage = () => {
     }
 
     if (isLoggedIn) {
+        document.cookie = pb.authStore.exportToCookie({httpOnly: false});
         return (
             <>
                 <h1>Logged in : {pb.authStore.model.username}</h1>
