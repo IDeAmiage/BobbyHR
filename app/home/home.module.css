@@ -1,0 +1,55 @@
+.lineUp {
+  animation: 2s anim-lineUp ease-out infinite;
+}
+
+.images {
+  padding: 20% 10%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.parallaxImage {
+  margin: 10% 0;
+  width: 45%;
+  background: none;
+}
+
+.parallaxImage2 {
+  margin: 10% auto 10%;
+  width: 65%;
+  background: none;
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-80%);
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hidescrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidescrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

@@ -28,11 +28,6 @@ Clone the repository:
 git clone https://github.com/IDeAmiage/BobbyHR.git
 ```
 
-Go to the right folder:
-```shell
-cd bobby-hr/
-```
-
 Install dependencies:
 ```shell
 npm i 
@@ -43,8 +38,16 @@ Run the project:
 npm run dev
 ```
 Project available at: http://localhost:3000 </br>
-Full documentation: https://beta.nextjs.org/docs </br>
 Be careful NextJS 13 is in beta, some features may not work.
+
+## Help
+
+### How to use Git
+- Wait for link PP
+
+### NextJS
+- [NextJS Documentation](https://nextjs.org/docs)
+- [NextJS Project](https://github.com/shadcn/taxonomy)
 
 ## Branch Security
 ### Main branch
