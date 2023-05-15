@@ -1,6 +1,7 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Menu, X, ArrowDown } from "react-feather";
+import { X } from "react-feather";
+import Link from "next/link";
 
 function SliderHome({ open, setOpen }) {
   return (
@@ -41,9 +42,9 @@ function SliderHome({ open, setOpen }) {
                     leaveTo="opacity-0"
                   >
                     <div>
-                      <div className="absolute top-0 right-0 rounded-bl-full bg-white_background_bobby w-20 h-20" />
-                      <div className="absolute top-0 right-0 pr-4 pt-4">
-                        <div className="flex items-start justify-end h-full w-full">
+                      <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-white_background_bobby" />
+                      <div className="absolute right-0 top-0 pr-4 pt-4">
+                        <div className="flex h-full w-full items-start justify-end">
                           <button
                             type="button"
                             className="text-gray-300 hover:text-black"
@@ -56,13 +57,18 @@ function SliderHome({ open, setOpen }) {
                       </div>
                     </div>
                   </Transition.Child>
-                  <div className="flex h-full flex-col overflow-hidden bg-brown_bobby py-6 shadow-xl">
+                  <div className="flex h-full flex-row overflow-hidden bg-brown_bobby py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                        Panel title
+                        IDEA
                       </Dialog.Title>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6">BCD</div>
+                    <div className="mt-6 flex flex-1 flex-col px-4 sm:px-6">
+                      <a href="#home" onClick={() => setOpen(!open)}>Home</a>
+                      <a href="#projects" onClick={() => setOpen(!open)}>Projects</a>
+                      <a href="#skills" onClick={() => setOpen(!open)}>Skills</a>
+                      <Link href="/home">About</Link>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

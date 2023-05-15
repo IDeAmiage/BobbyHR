@@ -1,34 +1,23 @@
-import Link from "next/link";
+import React from "react";
 import Image from "next/image";
-import cn from "@/lib/utils";
 
-export function Card({ href, className, data, children, disabled, ...props }) {
+export function Card({href, className, data, children, disabled, ...props}) {
   return (
-    <div
-      className={cn(
-        "border-slate-200 group relative rounded-lg border bg-brown_bobby p-6 shadow-md transition-shadow hover:shadow-lg",
-        disabled && "cursor-not-allowed opacity-60",
-        className
-      )}
-      {...props}
-    >
-      <div className="flex flex-col justify-between space-y-4">
-        <div className="[&>p]:text-slate-600 space-y-2 [&>h3]:!mt-0 [&>h4]:!mt-0">
-          <div className="flex flex-row items-center justify-center gap-4">
-            <Image src={children.img} className="w-48" alt="Picture of bobbyHR" />
-            <div className="flex flex-col">
-              <h3 className="text-2xl font-bold text-white">{children.title}</h3>
-              <p className="text-sm font-medium text-white">{children.year}</p>
-              <p className="text-sm font-medium text-white">{children.description}</p>
-            </div>
+    <div className="w-96">
+      <Image src={children.img} alt=" random imgee"
+           className="w-full rounded-lg object-cover object-center shadow-md" />
+
+      <div className="relative -mt-16 px-4">
+        <div className="rounded-lg bg-white p-6 shadow-lg">
+          <h4 className="mt-1 truncate text-xl font-semibold uppercase leading-tight">{children.title}</h4>
+          <div className="mt-1">
+            {children.description}
+          </div>
+          <div className="mt-4">
+            <span className="text-teal-600 text-md font-semibold">{children.year}</span>
           </div>
         </div>
       </div>
-      {href && (
-        <Link href={disabled ? "#" : href} className="absolute inset-0">
-          <span className="sr-only">View</span>
-        </Link>
-      )}
     </div>
-  );
+);
 }

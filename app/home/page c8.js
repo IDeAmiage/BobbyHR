@@ -7,7 +7,7 @@ import teachingpic from '../assets/teacher.png'
 import logoidea from '../assets/logoidea.png'
 import logoinstagram from '../assets/logoinstagram.webp'
 import logolinkedin from '../assets/linkedin.webp'
-import logotfc from '../assets/logotfc.png'
+import logotfc from '../assets/tfc.png'
 import puydufou from '../assets/puydufou.jpg'
 
 export default function CV() {
