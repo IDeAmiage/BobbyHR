@@ -21,31 +21,31 @@ const AuthUserForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-row justify-center items-center rounded-lg p-2 my-4 bg-gray_bobby">
-        <div className="pr-4 pl-2">
+      <div className="my-4 flex flex-row items-center justify-center rounded-lg bg-gray_bobby p-2">
+        <div className="pl-2 pr-4">
           <User className="stroke-brown_bobby" />
         </div>
         <input
-          className="form-input bg-gray_bobby text-black_bobby border-0"
+          className="form-input border-0 bg-gray_bobby text-black_bobby"
           type="text"
           placeholder="Nom d'utilisateur/Email"
           {...register("email")}
         ></input>
       </div>
-      <div className="flex flex-row justify-center items-center rounded-lg p-2 my-4 bg-gray_bobby">
-        <div className="pr-4 pl-2">
+      <div className="my-4 flex flex-row items-center justify-center rounded-lg bg-gray_bobby p-2">
+        <div className="pl-2 pr-4">
           <Lock className="stroke-brown_bobby" />
         </div>
         <input
-          className="form-input bg-gray_bobby text-black_bobby border-0"
+          className="form-input border-0 bg-gray_bobby text-black_bobby"
           type="password"
           placeholder="Mot de passe"
           {...register("password")}
         ></input>
       </div>
-      <div className="flex justify-center items-center py-4">
+      <div className="flex items-center justify-center py-4">
         <button
-          className="px-24 py-2 bg-brown_bobby rounded-lg font-Playfair text-white_background_bobby text-2xl font-medium hover:scale-110"
+          className="rounded-lg bg-brown_bobby px-24 py-2 font-Playfair text-2xl font-medium text-white_background_bobby hover:scale-110"
           type="submit"
         >
           Connexion

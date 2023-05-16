@@ -46,7 +46,7 @@ export default function Example() {
         </div>
       </div>
 
-      <div className="flex h-screen w-screen flex-col items-center" id="home">
+      <div className="flex w-screen flex-col items-center" id="home">
         <h1 className="pt-16 font-Playfair text-9xl font-extrabold text-black_bobby">
           IDEA
         </h1>
@@ -63,14 +63,14 @@ export default function Example() {
             autoplay
             loop
             src={Logo}
-            className="h-[700px]"
+            className="w-[40%]"
           />
           <h1 className="font-Playfair text-2xl font-extrabold text-black_bobby">EXPLORE</h1>
 
         <ArrowDown className="mt-5 h-8 w-8" aria-hidden="true"/>
       </div>
 
-      <div className="h-screen" id="projects">
+      <div className="" id="projects">
         <div className="pl-16">
           <h1 className="font-Playfair text-6xl font-extrabold text-black_bobby">
             PROJECTS
