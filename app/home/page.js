@@ -12,6 +12,7 @@ import styles from "@/app/home/home.module.css";
 import Masonry from "@/components/masonry";
 import skills from "@/utils/data/skills.data";
 import projects from "@/utils/data/projects.data";
+import Bubbles from "@/components/bubbles";
 
 const text = ["CREATE", "INVENT", "DEVELOP", "THINK"];
 
@@ -57,8 +58,8 @@ export default function Example() {
               {text[index % text.length]}
             </TextTransition>
           </h1>
+          <Bubbles className="w-[50%] h-[50%]"></Bubbles>
         </div>
-
           <Player
             autoplay
             loop
@@ -70,14 +71,14 @@ export default function Example() {
         <ArrowDown className="mt-5 h-8 w-8" aria-hidden="true"/>
       </div>
 
-      <div className="" id="projects">
+      <div id="projects">
         <div className="pl-16">
           <h1 className="font-Playfair text-6xl font-extrabold text-black_bobby">
             PROJECTS
           </h1>
         </div>
 
-        <div className="mt-10 flex flex-row flex-wrap justify-between px-[10%] align-middle">
+        <div className="text-neutral-600 grid grid-flow-row gap-8 px-36 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {projects.map((project) => (
             <div key={project.title}>
               <Card>{project}</Card>
@@ -150,13 +151,6 @@ export default function Example() {
               </svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-500">
-              <span className="sr-only">Twitter</span>
-              <svg className="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-              </svg>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">GitHub</span>
               <svg className="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd"
@@ -165,13 +159,14 @@ export default function Example() {
               </svg>
             </a>
             <a href="#" className="text-gray-400 hover:text-gray-500">
-              <span className="sr-only">Dribbble</span>
-              <svg className="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+              <span className="sr-only">GitHub</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" aria-hidden="true" height="24" fill="currentColor" viewBox="0 0 50 50">
                 <path fillRule="evenodd"
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                      d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"
                       clipRule="evenodd"></path>
               </svg>
             </a>
+
           </div>
           <p className="mt-8 text-center text-base leading-6 text-gray-400">
             © 2021 IDeA, Inc. All rights reserved.
