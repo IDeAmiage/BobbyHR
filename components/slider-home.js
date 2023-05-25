@@ -61,7 +61,7 @@ function SliderHome({ open, setOpen }) {
                   <div className="flex h-full flex-row overflow-hidden bg-brown_bobby py-8 shadow-xl ">
                     <div dir="ltr">
                       <div className="py-8 px-8">
-                        <Dialog.Title className="text-base font-semibold leading-6 text-[120px] content-center text-gray-100">
+                        <Dialog.Title className="text-base font-semibold leading-6 text-[130px] content-center text-gray-100">
                          IDEA
                         </Dialog.Title>
                       </div>  
@@ -108,7 +108,16 @@ function SliderHome({ open, setOpen }) {
                               clip-rule="evenodd" />
                       </svg>
                     </a>
+            
                     </div>
+                    <a href="http://localhost:3000/auth" className="text-gray-400 hover:text-gray-500 absolute bottom-0 right-2 text-[30px]">
+                      Login
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" aria-hidden="true" height="30" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" 
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z" 
+                        clip-rule="evenodd" />
+                    </svg>
+                    </a>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
