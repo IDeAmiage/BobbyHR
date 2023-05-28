@@ -9,6 +9,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   frontend:
     container_name: frontend
+    image: sharkyrekin/bobby-frontend:latest
     restart: unless-stopped
     build:
         context: .
