@@ -16,7 +16,7 @@ function SliderHome({open, setOpen}) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
+          <div className="fixed inset-0 bg-gray-500/75 transition-opacity"/>
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -41,6 +41,7 @@ function SliderHome({open, setOpen}) {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
+                    {/* Boutton fermeture */}
                     <div>
                       <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-white_background_bobby"/>
                       <div className="absolute right-0 top-0 pr-4 pt-4">
@@ -59,16 +60,18 @@ function SliderHome({open, setOpen}) {
                   </Transition.Child>
 
                   <div className="flex h-full flex-row overflow-hidden bg-brown_bobby py-8 shadow-xl">
-                    {/* Barre de naviguation */}
-                    <div className="flex w-full">
-                      <div className="w-1/3">
+                    {/* Barre de navigation */}
+                    <div className="flex w-full flex-col md:flex-row">
+
+                      {/* Logo */}
+                      <div className="md:w-1/4">
                         <div className="flex h-full flex-col items-center">
                           <div className="flex grow">
-                            <h1 className="text-white text-9xl">
+                            <h1 className="text-7xl text-white">
                               IDeA
                             </h1>
                           </div>
-                          <div className="flex flex-row gap-4">
+                          <div className="flex flex-row gap-4 pt-4">
                             <Link href="https://www.instagram.com/idea_ut1/" target="_blank"
                                   className="text-gray-400 hover:text-gray-500 ">
                               <span className="sr-only">Instagram</span>
@@ -84,13 +87,15 @@ function SliderHome({open, setOpen}) {
                               <Mail />
                             </Link>
                           </div>
-
                         </div>
                       </div>
+
+                      { /* Barre blanche */ }
                       <div className="w-px bg-white"></div>
 
-                      <div className="max-h-0 w-2/3">
-                        <div className="mt-6 flex flex-col justify-center gap-2 px-4 text-6xl text-gray-100 sm:px-6">
+                      {/* Menu */}
+                      <div className="max-h-0 w-3/4">
+                        <div className="mt-6 flex flex-col justify-center gap-4 px-4 text-5xl text-gray-100 sm:px-6">
                           <a href="#home" className="hover:text-gray-500" onClick={() => setOpen(!open)}>Home</a>
                           <a href="#skills" className="hover:text-gray-500" onClick={() => setOpen(!open)}>Skills</a>
                           <a href="#projects" className="hover:text-gray-500" onClick={() => setOpen(!open)}>Projects</a>
@@ -99,14 +104,12 @@ function SliderHome({open, setOpen}) {
                       </div>
                     </div>
 
-                    <Link href="/auth"
-                          className="absolute bottom-0 right-2 text-[30px] text-gray-400 hover:text-gray-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" aria-hidden="true" height="30"
-                           viewBox="0 0 24 24" fill="currentColor">
-                        <path fillRule="evenodd"
-                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-5.5-2.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM10 12a5.99 5.99 0 00-4.793 2.39A6.483 6.483 0 0010 16.5a6.483 6.483 0 004.793-2.11A5.99 5.99 0 0010 12z"
-                              clipRule="evenodd"/>
-                      </svg>
+                    {/* Bouton Intranet */}
+                    <Link href="/auth" className="absolute bottom-0 right-2 p-4 text-[30px] text-gray-400 hover:text-gray-500">
+                      <span className="sr-only">Intranet</span>
+                      <div className="flex flex-row items-center align-middle">
+                        Intranet
+                      </div>
                     </Link>
                   </div>
                 </Dialog.Panel>
@@ -119,7 +122,7 @@ function SliderHome({open, setOpen}) {
   );
 }
 
-const Mail = ({ size = 24 }) => (
+const Mail = ({ size = 32 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -133,7 +136,7 @@ const Mail = ({ size = 24 }) => (
   </svg>
 );
 
-const Instagram = ({ size = 24 }) => (
+const Instagram = ({ size = 32 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -144,7 +147,7 @@ const Instagram = ({ size = 24 }) => (
   </svg>
 );
 
-const Linkedin = ({ size = 24 }) => (
+const Linkedin = ({ size = 32 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

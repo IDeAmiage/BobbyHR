@@ -9,9 +9,9 @@ const LoginPage = () => {
     return <h1>Logged in : {pb.authStore.model.username}</h1>;
   } else {
     return (
-      <main className="bg-white_background_bobby flex min-h-screen flex-col items-center justify-center">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-white_background_bobby">
         <div className="py-8">
-          <h1 className="font-Playfair text-black_bobby text-7xl font-extrabold">
+          <h1 className="font-Playfair text-7xl font-extrabold text-black_bobby">
             Connexion
           </h1>
         </div>
