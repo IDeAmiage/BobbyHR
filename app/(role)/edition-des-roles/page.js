@@ -11,20 +11,20 @@ export default async function Liste_Roles() {
     const roles = await rolesData;
     return (
         <>
-            <div className="w-2/3 mx-auto" id="main">
-                <div className="bg-white shadow-md rounded my-6">
-                    <table className="text-left w-full border-collapse">
+            <div className="mx-auto w-2/3" id="main">
+                <div className="my-6 rounded bg-white shadow-md">
+                    <table className="w-full border-collapse text-left">
                         <thead>
                             <tr>
-                                <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Roles</th>
-                                <th className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+                                <th className="bg-grey-lightest text-grey-dark border-grey-light border-b px-6 py-4 text-sm font-bold uppercase">Roles</th>
+                                <th className="bg-grey-lightest text-grey-dark border-grey-light border-b px-6 py-4 text-sm font-bold uppercase">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {roles.map((role) => (
                                 <tr className="hover:bg-grey-lighter" key={role.id}>
-                                    <td className="py-4 px-6 border-b border-grey-light">{role.type_role}</td>
-                                    <td className="py-4 px-6 border-b border-grey-light">
+                                    <td className="border-grey-light border-b px-6 py-4">{role.type_role}</td>
+                                    <td className="border-grey-light border-b px-6 py-4">
                                         <div className="flex gap-4">
                                             <EditButton idRole={role.id} typeRole={role.type_role}></EditButton>
                                             <DeleteButton idRole={role.id} typeRole={role.type_role}></DeleteButton>

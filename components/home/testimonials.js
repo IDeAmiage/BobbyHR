@@ -10,7 +10,7 @@ const Testimonials  = () => {
   return (
     <Container>
       <div className="grid gap-10 lg:grid-cols-2 xl:grid-cols-3">
-        <div className="lg:col-span-2 xl:col-auto">
+        <div className="hover:-translate-y-1 lg:col-span-2 xl:col-auto">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
               Creation of a <Mark>dashboard</Mark>.
@@ -22,7 +22,7 @@ const Testimonials  = () => {
             />
           </div>
         </div>
-        <div className="">
+        <div className="hover:-translate-y-1">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
               Predict the number of visitor of the park by day or night.
@@ -35,7 +35,7 @@ const Testimonials  = () => {
             />
           </div>
         </div>
-        <div className="">
+        <div className="hover:-translate-y-1">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
               Processing and analysis of data concerning matches and subscriptions through dashboards,

@@ -38,10 +38,10 @@ function FormsDemandeRole({ roles, projects, sprint }) {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col min-h-screen justify-start items-center bg-white_background_bobby gap-2"
+        className="flex min-h-screen flex-col items-center justify-start gap-2 bg-white_background_bobby"
       >
         <div className="py-8">
-          <h1 className="text-7xl font-Playfair font-extrabold text-black_bobby">
+          <h1 className="font-Playfair text-7xl font-extrabold text-black_bobby">
             Choix rôles
           </h1>
         </div>
@@ -56,9 +56,9 @@ function FormsDemandeRole({ roles, projects, sprint }) {
           {JSON.parse(roles).map((role) => (
             <li key={role.type_role} className="border-b-2 border-gray-100">
               <div
-                className={`py-5 px-4 flex justify-start border-transparent bg-transparent gap-4 items-center`}
+                className={`flex items-center justify-start gap-4 border-transparent bg-transparent px-4 py-5`}
               >
-                <div className={`pr-4 grow`}>{role.type_role}</div>
+                <div className={`grow pr-4`}>{role.type_role}</div>
                 <div className="sm:col-span-2 sm:col-start-1">
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Nombre de M1
@@ -88,7 +88,7 @@ function FormsDemandeRole({ roles, projects, sprint }) {
           ))}
         </ul>
         <button
-          className="px-12 py-2 bg-brown_bobby rounded-lg font-Playfair text-white_background_bobby text-lg font-medium hover:scale-105"
+          className="rounded-lg bg-brown_bobby px-12 py-2 font-Playfair text-lg font-medium text-white_background_bobby hover:scale-105"
           type="submit"
         >
           Envoyer

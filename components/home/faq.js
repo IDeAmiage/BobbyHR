@@ -9,12 +9,12 @@ const Faq = () => {
   return (
     <Container className="!p-0">
       <div className="mx-auto w-full max-w-2xl rounded-2xl p-2">
-        {faqdata.map((item, index) => (
+        {faqdata.map((item) => (
           <div key={item.question} className="mb-5">
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="dark:bg-trueGray-800 flex w-full items-center justify-between rounded-lg bg-gray-50 p-4 text-left text-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:text-gray-200">
+                  <Disclosure.Button className="dark:bg-trueGray-800 flex w-full items-center justify-between rounded-lg bg-gray-50 p-4 text-left text-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-indigo-100/75 dark:text-gray-200">
                     <span>{item.question}</span>
                     <ChevronUpIcon
                       className={`${
