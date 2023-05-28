@@ -6,13 +6,17 @@ import idea from "@/public/image/idea-logo.png";
 
 export default function Footer() {
   const navigation = [
-    "Product",
-    "Features",
-    "Pricing",
-    "Company",
-    "Blog",
+    {key: "Home", link: "#home"},
+    {key: "Skills", link: "#skills"},
+    {key: "Projects", link: "#projects"},
+    {key: "FAQ", link: "#faq"},
   ];
-  const legal = ["Terms", "Privacy", "Legal"];
+  const legal = [
+    {key: "Terms", link: "/terms"},
+    {key: "Privacy", link: "/privacy"},
+    {key: "Legal", link: "/"},
+  ];
+
   return (
     <div className="relative">
       <Container>
@@ -42,17 +46,17 @@ export default function Footer() {
           <div>
             <div className="-ml-3 -mt-2 flex w-full flex-wrap lg:ml-0">
               {navigation.map((item) => (
-                <Link key={item} href="/" className="dark:focus:bg-trueGray-700 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300">
-                  {item}
-                </Link>
+                <a key={item.key} href={item.link} className="dark:focus:bg-trueGray-700 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300">
+                  {item.key}
+                </a>
               ))}
             </div>
           </div>
           <div>
             <div className="-ml-3 -mt-2 flex w-full flex-wrap lg:ml-0">
               {legal.map((item) => (
-                <Link key={item} href="/" className="dark:focus:bg-trueGray-700 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300">
-                  {item}
+                <Link key={item.key} href={item.link} className="dark:focus:bg-trueGray-700 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300">
+                  {item.key}
                 </Link>
               ))}
             </div>
@@ -60,34 +64,30 @@ export default function Footer() {
           <div className="">
             <div>Follow us</div>
             <div className="mt-5 flex space-x-5 text-gray-400 dark:text-gray-500">
-              <a
-                href="https://twitter.com/web3templates"
-                target="_blank"
-                rel="noopener">
-                <span className="sr-only">Twitter</span>
-                <Twitter />
-              </a>
-              <a
-                href="https://facebook.com/web3templates"
-                target="_blank"
-                rel="noopener">
-                <span className="sr-only">Facebook</span>
-                <Facebook />
-              </a>
-              <a
-                href="https://instagram.com/web3templates"
+              <Link
+                href="https://www.instagram.com/idea_ut1/"
+                className="text-gray-400 hover:text-gray-500"
                 target="_blank"
                 rel="noopener">
                 <span className="sr-only">Instagram</span>
                 <Instagram />
-              </a>
-              <a
-                href="https://linkedin.com/"
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/idea-miage/"
+                className="text-gray-400 hover:text-gray-500"
                 target="_blank"
                 rel="noopener">
                 <span className="sr-only">Linkedin</span>
                 <Linkedin />
-              </a>
+              </Link>
+              <Link
+                href="mailto:ideamiage@gmail.com"
+                className="text-gray-400 hover:text-gray-500"
+                target="_blank"
+                rel="noopener">
+                <span className="sr-only">Mail To</span>
+                <Mail />
+              </Link>
             </div>
           </div>
         </div>
@@ -100,27 +100,20 @@ export default function Footer() {
   );
 }
 
-const Twitter = ({ size = 24 }) => (
+const Mail = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={size}
+    aria-hidden="true"
     height={size}
+    width={size}
     viewBox="0 0 24 24"
     fill="currentColor">
-    <path d="M24 4.37a9.6 9.6 0 0 1-2.83.8 5.04 5.04 0 0 0 2.17-2.8c-.95.58-2 1-3.13 1.22A4.86 4.86 0 0 0 16.61 2a4.99 4.99 0 0 0-4.79 6.2A13.87 13.87 0 0 1 1.67 2.92 5.12 5.12 0 0 0 3.2 9.67a4.82 4.82 0 0 1-2.23-.64v.07c0 2.44 1.7 4.48 3.95 4.95a4.84 4.84 0 0 1-2.22.08c.63 2.01 2.45 3.47 4.6 3.51A9.72 9.72 0 0 1 0 19.74 13.68 13.68 0 0 0 7.55 22c9.06 0 14-7.7 14-14.37v-.65c.96-.71 1.79-1.6 2.45-2.61z" />
+    <path fillRule="evenodd"
+          d="M17.834 6.166a8.25 8.25 0 100 11.668.75.75 0 011.06 1.06c-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788 3.807-3.808 9.98-3.808 13.788 0A9.722 9.722 0 0121.75 12c0 .975-.296 1.887-.809 2.571-.514.685-1.28 1.179-2.191 1.179-.904 0-1.666-.487-2.18-1.164a5.25 5.25 0 11-.82-6.26V8.25a.75.75 0 011.5 0V12c0 .682.208 1.27.509 1.671.3.401.659.579.991.579.332 0 .69-.178.991-.579.3-.4.509-.99.509-1.671a8.222 8.222 0 00-2.416-5.834zM15.75 12a3.75 3.75 0 10-7.5 0 3.75 3.75 0 007.5 0z"
+          clipRule="evenodd" />
   </svg>
 );
 
-const Facebook = ({ size = 24 }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="currentColor">
-    <path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07" />
-  </svg>
-);
 const Instagram = ({ size = 24 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -141,4 +134,4 @@ const Linkedin = ({ size = 24 }) => (
     fill="currentColor">
     <path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.27 20.1H3.65V9.24h3.62V20.1zM5.47 7.76h-.03c-1.22 0-2-.83-2-1.87 0-1.06.8-1.87 2.05-1.87 1.24 0 2 .8 2.02 1.87 0 1.04-.78 1.87-2.05 1.87zM20.34 20.1h-3.63v-5.8c0-1.45-.52-2.45-1.83-2.45-1 0-1.6.67-1.87 1.32-.1.23-.11.55-.11.88v6.05H9.28s.05-9.82 0-10.84h3.63v1.54a3.6 3.6 0 0 1 3.26-1.8c2.39 0 4.18 1.56 4.18 4.89v6.21z" />
   </svg>
-  );
+);

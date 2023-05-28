@@ -15,12 +15,12 @@ export default function HomePage() {
               <Link href="/demande-de-personne">Roles</Link>
           </nav>
           <div className='flex justify-center'>
-            <Image className='h-35 rounded-2xl w-40 bg-white_accent_bobby ' src={logo} alt="logo"/>
+            <Image className='h-35 w-40 rounded-2xl bg-white_accent_bobby ' src={logo} alt="logo"/>
         </div>
-        <div className='grid justify-items-center mt-5'>
-            <h1 className="text-5xl font-bold font-serif mb-3"> IDeA </h1>
-            <h2 className='text-4xl font-medium font-serif '>Data & Compute Science</h2>
-            <h5 className='text-2xl font-serif font-extralight text-gray_bobby'>Startup toulousaine spécialisée dans le SI et traitement de données</h5>
+        <div className='mt-5 grid justify-items-center'>
+            <h1 className="mb-3 font-serif text-5xl font-bold"> IDeA </h1>
+            <h2 className='font-serif text-4xl font-medium '>Data & Compute Science</h2>
+            <h5 className='font-serif text-2xl font-extralight text-gray_bobby'>Startup toulousaine spécialisée dans le SI et traitement de données</h5>
         </div>
     </main>
   );

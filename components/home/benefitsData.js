@@ -17,17 +17,17 @@ const benefitOne = {
   bullets: [
     {
       title: "Data analysis",
-      desc: "We are able to analyze your data and extract the information you need.",
+      desc: "Analyze your data and extract the information you need.",
       icon: <ArrowTrendingUpIcon />,
     },
     {
       title: "Machine Learning",
-      desc: "We are able to create a machine learning model to predict your data.",
+      desc: "Create a machine learning model to predict your data.",
       icon: <Square3Stack3DIcon />,
     },
     {
       title: "Data visualization",
-      desc: "We are able to create a dashboard to visualize your data.",
+      desc: "Create a dashboard to visualize your data.",
       icon: <ChartBarIcon />,
     },
   ],
@@ -40,17 +40,17 @@ const benefitTwo = {
   bullets: [
     {
       title: "Big Data",
-      desc: "We are able to manage your big data.",
+      desc: "Manage your big data.",
       icon: <CircleStackIcon />,
     },
     {
       title: "Project Management",
-      desc: "We are able to manage your project from A to Z.",
+      desc: "Manage your project from A to Z.",
       icon: <MagnifyingGlassIcon />,
     },
     {
       title: "Web Development",
-      desc: "We are able to create a website for your project.",
+      desc: "Create a website for your project.",
       icon: <GlobeAltIcon />,
     },
   ],

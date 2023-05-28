@@ -17,7 +17,7 @@ const Home = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className="bg-white_background_bobby px-6">
       <Navbar />
       <div className="relative">
         <div className="fixed right-0 top-0 h-20 w-20 rounded-bl-full bg-brown_bobby"/>
@@ -36,6 +36,7 @@ const Home = () => {
       </div>
       <Hero />
       <SectionTitle
+        id="skills"
         pretitle="Why IDeA?"
         title="Why should you contact us">
         We are a team of student who learned how to code and we want to help you to create your project.
@@ -43,19 +44,22 @@ const Home = () => {
       <Benefits data={benefitOne} />
       <Benefits imgPos="right" data={benefitTwo} />
       <SectionTitle
+        id="projects"
         pretitle="Projects"
         title="Here's some of our projects">
         We have already worked on some projects, here are some of them.
       </SectionTitle>
       <Testimonials />
-      <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
+      <SectionTitle
+        id="faq"
+        pretitle="FAQ"
+        title="Frequently Asked Questions">
+        If you still have questions look here
       </SectionTitle>
       <Faq />
       <Footer />
       <SliderHome open={open} setOpen={setOpen}/>
-    </>
+    </div>
   );
 }
 

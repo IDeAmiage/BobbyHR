@@ -38,21 +38,11 @@ const Faq = () => {
 const faqdata = [
   {
     question: "Is our project free",
-    answer: "Yes, our project are completely free.",
+    answer: "Yes, our project are completely free!",
   },
   {
     question: "How can I contact you?",
-    answer: "Email us at",
-  },
-  {
-    question: "What is your refund policy? ",
-    answer:
-      "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
-  },
-  {
-    question: "Do you offer technical support? ",
-    answer:
-      "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
+    answer: 'Email us at ideamiage@gmail.com',
   },
 ];
 

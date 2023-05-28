@@ -15,7 +15,6 @@ const Testimonials  = () => {
             <p className="text-2xl leading-normal ">
               Creation of a <Mark>dashboard</Mark>.
             </p>
-
             <Avatar
               image={cgr}
               name="CGR"
@@ -26,7 +25,7 @@ const Testimonials  = () => {
         <div className="">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
-              Creation of a <Mark>dashboard</Mark>.
+              Predict the number of visitor of the park by day or night.
             </p>
 
             <Avatar
@@ -39,7 +38,8 @@ const Testimonials  = () => {
         <div className="">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
-              Creation of a <Mark>dashboard</Mark>.
+              Processing and analysis of data concerning matches and subscriptions through dashboards,
+              and implementation of a customer typology.
             </p>
 
             <Avatar

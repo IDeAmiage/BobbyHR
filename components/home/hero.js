@@ -5,8 +5,8 @@ import heroImg from "@/public/image/hero.png";
 const Hero = () => {
   return (
     <>
-      <Container className="flex flex-wrap pt-28">
-        <div className="flex w-full items-center lg:w-1/2">
+      <Container className="flex flex-wrap">
+        <div id="home" className="flex w-full items-center lg:w-1/2">
           <div className="mb-8 max-w-2xl">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 dark:text-white lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight">
               IDeA
@@ -22,7 +22,7 @@ const Hero = () => {
               src={heroImg}
               width="616"
               height="617"
-              className={"object-cover"}
+              className="object-cover"
               alt="Hero Illustration"
               loading="eager"
               placeholder="blur"
