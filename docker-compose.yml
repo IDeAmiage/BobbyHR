@@ -1,0 +1,33 @@
+services:
+  reverse-proxy:
+    image: traefik:v2.10
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  frontend:
+    container_name: frontend
+    image: sharkyrekin/bobby-frontend:latest
+    restart: unless-stopped
+    build:
+        context: .
+        dockerfile: NextJS.Dockerfile
+    ports:
+      - "3000:3000"
+    labels:
+      - "traefik.http.routers.frontend.rule=Host(`test.idea-student.works`)"
+  backend:
+    container_name: backend
+    restart: unless-stopped
+    build:
+        context: .
+        dockerfile: Pocketbase.Dockerfile
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5

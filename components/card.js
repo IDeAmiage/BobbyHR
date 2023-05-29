@@ -3,21 +3,22 @@ import Image from "next/image";
 
 export function Card({href, className, data, children, disabled, ...props}) {
   return (
-    <div className="w-96">
-      <Image src={children.img} alt=" random imgee"
-           className="w-full rounded-lg object-cover object-center shadow-md" />
+    <div
+      className="my-4 rounded bg-brown_bobby shadow-lg duration-300 hover:-translate-y-1">
+      <figure>
+        <Image src={children.img} className="h-60 w-full rounded-t object-cover" alt={children.title}/>
 
-      <div className="relative -mt-16 px-4">
-        <div className="rounded-lg bg-white p-6 shadow-lg">
-          <h4 className="mt-1 truncate text-xl font-semibold uppercase leading-tight">{children.title}</h4>
-          <div className="mt-1">
+        <figcaption className="p-4">
+          <p className="mb-4 text-lg font-bold leading-relaxed text-black">
+            {children.title}
+          </p>
+
+          <small className="leading-5 text-black">
             {children.description}
-          </div>
-          <div className="mt-4">
-            <span className="text-teal-600 text-md font-semibold">{children.year}</span>
-          </div>
-        </div>
-      </div>
+          </small>
+        </figcaption>
+      </figure>
     </div>
-);
+)
+
 }

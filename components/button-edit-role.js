@@ -19,7 +19,8 @@ export function DeleteButton({ idRole, typeRole }) {
         refreshData()
     }
 
-    return (<div>
+    return (
+      <div>
         <a x-data="{ tooltip: 'Delete' }" href="#" onClick={() => setIsOpen(true)}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +39,7 @@ export function DeleteButton({ idRole, typeRole }) {
             </svg>
         </a>
         <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} ariaHideApp={false}>
-            <h1>Voulez vous supprimer le rôle "{typeRole}"?</h1>
+            <h1>Voulez vous supprimer le rôle &quot;{typeRole}&quot;?</h1>
             <button onClick={() => setIsOpen(false)} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Annuler</button>
             <button onClick={() => deleteRole(idRole)}>Supprimer</button>
         </Modal>
@@ -80,7 +81,7 @@ export function EditButton({ idRole, typeRole }) {
             </svg>
         </a>
         <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} ariaHideApp={false}>
-            <h1>Modifier le rôle "{typeRole}"</h1>
+            <h1>Modifier le rôle &quot;{typeRole}&quot;</h1>
             <form onSubmit={handleSubmit(RoleForm)}>
                 <input type="text" id="newRole" {...register("role")} placeholder={typeRole}/>
                 <button onClick={() => setIsOpen(false)}>Annuler</button>

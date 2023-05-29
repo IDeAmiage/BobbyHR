@@ -56,3 +56,6 @@ For the main branch security, it is impossible to merge our modifications direct
 ### Dev branch
 The dev branch is the branch that will be used to test the functionalities of the project. It is possible to merge our modifications directly on this branch without going through an auxiliary branch allowing to test the functionalities. Only the technical manager can make a merge request, that is to say to ask for the approval of our code to someone from the project of the test branch to the main branch, in order to update with the latest features.
 
+## License
+
+Licensed under the [MIT license](https://github.com/IDeAmiage/BobbyHR/blob/main/LICENSE.md).
