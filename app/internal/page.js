@@ -1,24 +1,26 @@
-
-import Link from 'next/link';
 import Image from 'next/image'
-import logo from '@/public/image/idea-logo.png'
 import welcome from '@/public/image/welcome.jpeg'
 import NavBar from '@/components/nav-bar';
-import { read_last_sprint, read_sprint } from "@/lib/crud/sprintCrud";
+import { read_last_sprint } from "@/lib/crud/sprintCrud";
+import {initPocketBaseSSR} from "@/lib/pocketbasessr";
 
 async function getLastSprint() {
-    return read_last_sprint();
+  return read_last_sprint();
+}
+
+async function getSprint(pb, id) {
+  return await pb.collection('sprint').getOne(id, {});
 }
 
 export default async function AccueilPage() {
-    const rolesData = read_sprint('9jn3owq12h8c4i0');
-    const roles = await rolesData;
-    console.log(roles)
+  const pb = await initPocketBaseSSR();
+  const rolesData = getSprint(pb, '9jn3owq12h8c4i0');
+  const roles = await rolesData;
+  console.log(roles)
+
   return (
       <main className="flex flex-col bg-white_background_bobby">
         <NavBar/>
-
-        <br/>
 
         <div className="relative py-8">
             <Image className="w-full" src={welcome} alt="Bienvenue"/>

@@ -17,6 +17,7 @@ const AuthUserForm = () => {
     login({ email: data.email, password: data.password });
 
     if (pb.authStore.isValid) {
+      console.log("cookie", pb.authStore.exportToCookie({ httpOnly: false }));
       document.cookie = pb.authStore.exportToCookie({ httpOnly: false });
       redirect()
     }

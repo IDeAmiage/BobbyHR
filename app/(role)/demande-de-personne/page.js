@@ -21,8 +21,10 @@ async function RoleForms() {
 
     const [roles, projects] = await Promise.all([rolesData, projectsData]);
 
-    return (<main><NavBar />
-        <FormsDemandeRole roles={JSON.stringify(roles)}
+    return (
+      <main>
+          <NavBar />
+          <FormsDemandeRole roles={JSON.stringify(roles)}
             projects={JSON.stringify(projects)} />
     </main>);
 }

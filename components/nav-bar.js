@@ -15,10 +15,10 @@ export default function NavBar() {
   const pathname = usePathname()
   console.log(pathname)
   const navigation = [
-    { name: 'Home', href: '/internal', current: pathname == '/internal' },
-    { name: 'Demande de role', href: '/demande-de-role', current: pathname == '/demande-de-role' },
-    { name: 'Edition des roles', href: '/edition-des-roles', current: pathname == '/edition-des-roles' },
-    { name: 'Demande de personne', href: '/demande-de-personne', current: pathname == '/demande-de-personne' },
+    { name: 'Home', href: '/internal', current: pathname === '/internal' },
+    { name: 'Demande de role', href: '/demande-de-role', current: pathname === '/demande-de-role' },
+    { name: 'Edition des roles', href: '/edition-des-roles', current: pathname === '/edition-des-roles' },
+    { name: 'Demande de personne', href: '/demande-de-personne', current: pathname === '/demande-de-personne' },
   ]
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -86,6 +86,8 @@ export default function NavBar() {
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
+                        width={32}
+                        height={32}
                       />
                     </Menu.Button>
                   </div>
