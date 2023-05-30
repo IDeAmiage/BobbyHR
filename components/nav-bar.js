@@ -2,18 +2,24 @@
 
 import { Fragment } from 'react'
 import Link from 'next/link';
+import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { X, Bell, Menu as MenuIcon } from 'react-feather'
+import { useRouter, usePathname } from 'next/navigation';
+import LogoIdea from '@/public/image/idea-logo.png'
 import cn from '@/lib/utils'
 
-const navigation = [
-  { name: 'Home', href: '/internal', current: true },
-  { name: 'Demande de role', href: '/demande-de-role', current: false },
-  { name: 'Edition des roles', href: '/edition-des-roles', current: false },
-  { name: 'Demande de personne', href: '/demande-de-personne', current: false },
-]
+
 
 export default function NavBar() {
+  const pathname = usePathname()
+  console.log(pathname)
+  const navigation = [
+    { name: 'Home', href: '/internal', current: pathname == '/internal' },
+    { name: 'Demande de role', href: '/demande-de-role', current: pathname == '/demande-de-role' },
+    { name: 'Edition des roles', href: '/edition-des-roles', current: pathname == '/edition-des-roles' },
+    { name: 'Demande de personne', href: '/demande-de-personne', current: pathname == '/demande-de-personne' },
+  ]
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -33,15 +39,15 @@ export default function NavBar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
+                  <Image
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={LogoIdea}
+                    alt="IDeA"
                   />
-                  <img
+                  <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={LogoIdea}
+                    alt="IDeA"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">

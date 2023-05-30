@@ -15,7 +15,7 @@ import projects from "@/utils/data/projects.data";
 
 const text = ["CREATE", "INVENT", "DEVELOP", "THINK"];
 
-export default function Example() {
+export default function CV() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 

@@ -4,9 +4,17 @@ import Image from 'next/image'
 import logo from '@/public/image/idea-logo.png'
 import welcome from '@/public/image/welcome.jpeg'
 import NavBar from '@/components/nav-bar';
+import { read_last_sprint, read_sprint } from "@/lib/crud/sprintCrud";
 
+async function getLastSprint() {
+    return read_last_sprint();
 
-export default function AccueilPage() {
+}
+
+export default async function AccueilPage() {
+    const rolesData = read_sprint('9jn3owq12h8c4i0');
+    const roles = await rolesData;
+    console.log(roles)
   return (
       <main className="bg-white_background_bobby flex flex-col">
         <NavBar/>
@@ -32,38 +40,6 @@ export default function AccueilPage() {
                 <div className="bg-[#CACACA] text-[#63535B] rounded-xl">
                     <div className="pt-1 pt-2">RÔLE</div>
                     <div className="py-4 text-3xl font-semibold max-sm:text-2xl">SM</div>
-                </div>
-            </div>
-
-            <div className="pt-11">
-                <div className="bg-[#E9E6E4] text-[#63535B] text-2xl rounded-xl font-semibold pl-6"> MES TÂCHES </div>
-                <div className="">
-                    <table className="border-collapse border border-slate-500 bg-[#CACACA] w-full">
-                        <thead className="text-[#63535B] text-lg">
-                            <tr>
-                                <th className="border border-slate-600 py-1.5 px-5 font-normal">EN COURS</th>
-                                <th className="border border-slate-600 py-1.5 px-5 font-normal">DUREE ESTIMEE</th>
-                                <th className="border border-slate-600 py-1.5 px-5 font-normal">COMMENTAIRES</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-white font-thin">
-                            <tr>
-                                <td className="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
-                                <td className="border border-slate-600 py-1.5 px-5">7</td>
-                                <td className="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                            <tr>
-                                <td className="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
-                                <td className="border border-slate-600 py-1.5 px-5">7</td>
-                                <td className="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                            <tr>
-                                <td className="border border-slate-600 py-1.5 px-5">UI Page d'accueil</td>
-                                <td className="border border-slate-600 py-1.5 px-5">7</td>
-                                <td className="border border-slate-600 py-1.5 px-5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
