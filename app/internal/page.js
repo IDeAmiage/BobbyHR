@@ -8,7 +8,6 @@ import { read_last_sprint, read_sprint } from "@/lib/crud/sprintCrud";
 
 async function getLastSprint() {
     return read_last_sprint();
-
 }
 
 export default async function AccueilPage() {
@@ -16,37 +15,33 @@ export default async function AccueilPage() {
     const roles = await rolesData;
     console.log(roles)
   return (
-      <main className="bg-white_background_bobby flex flex-col">
+      <main className="flex flex-col bg-white_background_bobby">
         <NavBar/>
 
         <br/>
 
-        <div className="py-8 relative">
+        <div className="relative py-8">
             <Image className="w-full" src={welcome} alt="Bienvenue"/>
-            <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white place-self_center text-5xl justify-items-center font-bold font-serif mb-3 text-center max-sm:text-3xl"> Bienvenue Ziona !</h1>
+            <h1 className="place-self_center absolute left-1/2 top-1/2 mb-3 -translate-x-1/2 -translate-y-1/2 justify-items-center text-center font-serif text-5xl font-bold text-white max-sm:text-3xl"> Bienvenue Ziona !</h1>
         </div>
 
         <div className="font-Playfair">
 
-            <div className="grid grid-cols-3 gap-4 text-center mx-6">
-                <div className="bg-[#E9E6E4] text-[#63535B] rounded-xl flex-col">
-                    <div className="pt-1 pt-2">PROJET</div>
+            <div className="mx-6 grid grid-cols-3 gap-4 text-center">
+                <div className="flex-col rounded-xl bg-[#E9E6E4] text-[#63535B]">
+                    <div className="pt-2">PROJET</div>
                     <div className="py-4 text-3xl font-semibold max-sm:text-2xl">Bobby HR</div>
                 </div>
-                <div className="bg-[#63535B] text-[#E9E6E4] rounded-xl">
-                    <div className="pt-1 pt-2">SPRINT</div>
+                <div className="rounded-xl bg-[#63535B] text-[#E9E6E4]">
+                    <div className="pt-2">SPRINT</div>
                     <div className="py-4 text-3xl font-semibold max-sm:text-2xl">4</div>
                 </div>
-                <div className="bg-[#CACACA] text-[#63535B] rounded-xl">
-                    <div className="pt-1 pt-2">RÔLE</div>
+                <div className="rounded-xl bg-[#CACACA] text-[#63535B]">
+                    <div className="pt-2">RÔLE</div>
                     <div className="py-4 text-3xl font-semibold max-sm:text-2xl">SM</div>
                 </div>
             </div>
         </div>
-
-        <footer>
-
-        </footer>
         </main>
   );
 }
