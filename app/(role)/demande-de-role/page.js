@@ -1,7 +1,11 @@
+import NavBar from '@/components/nav-bar';
+
 
 export default function RoleForm() {
   return (
-  <form className="mt-4 grid justify-items-stretch">   
+    <main>
+      <NavBar />
+  <form className="mt-4 grid justify-items-stretch">
   <h1 className="text-center text-4xl text-brown_bobby">Période X </h1>
   <h2 className="mt-7 text-center text-2xl font-bold">Choix des rôles pour la période X</h2>
   <h5 className="mt-10 text-center">
@@ -88,4 +92,6 @@ export default function RoleForm() {
   </div>
   <button className="mt-5 h-10 w-32 justify-self-center rounded-lg bg-brown_bobby font-medium text-white hover:bg-purple_bobby focus:outline-none focus:ring focus:ring-brown_bobby " type="submit">Valider</button>
 </form>
-  );}
+      </main>
+  );
+    }

@@ -1,5 +1,7 @@
 import { initPocketBaseSSR } from '@/lib/pocketbasessr';
 import FormsDemandeRole from '@/components/form-demande-role';
+import NavBar from '@/components/nav-bar';
+
 
 async function getRoles(pb) {
     return await pb.collection('role').getFullList(200, {
@@ -19,8 +21,12 @@ async function RoleForms() {
 
     const [roles, projects] = await Promise.all([rolesData, projectsData]);
 
-    return <FormsDemandeRole roles={JSON.stringify(roles)}
-                  projects={JSON.stringify(projects)}/>;
+    return (
+      <main>
+          <NavBar />
+          <FormsDemandeRole roles={JSON.stringify(roles)}
+            projects={JSON.stringify(projects)} />
+    </main>);
 }
 
 export default RoleForms;

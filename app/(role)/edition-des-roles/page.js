@@ -1,5 +1,6 @@
-import { read_all_role} from "@/lib/crud/roleCrud";
-import { DeleteButton, EditButton, AddButton} from "@/components/button-edit-role";
+import { read_all_role } from "@/lib/crud/roleCrud";
+import { DeleteButton, EditButton, AddButton } from "@/components/button-edit-role";
+import NavBar from '@/components/nav-bar';
 
 async function getRoles() {
     const res = await read_all_role();
@@ -10,7 +11,8 @@ export default async function Liste_Roles() {
     const rolesData = getRoles();
     const roles = await rolesData;
     return (
-        <>
+        <main>
+            <NavBar />
             <div className="mx-auto w-2/3" id="main">
                 <div className="my-6 rounded bg-white shadow-md">
                     <table className="w-full border-collapse text-left">
@@ -37,7 +39,7 @@ export default async function Liste_Roles() {
                 </div>
                 <AddButton></AddButton>
             </div>
-        </>
+        </main>
     );
 }
 

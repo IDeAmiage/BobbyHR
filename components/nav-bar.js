@@ -5,16 +5,21 @@ import Link from 'next/link';
 import Image from "next/image";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { X, Bell, Menu as MenuIcon } from 'react-feather'
+import { useRouter, usePathname } from 'next/navigation';
+import LogoIdea from '@/public/image/idea-logo.png'
 import cn from '@/lib/utils'
 
-const navigation = [
-  { name: 'Home', href: '/internal', current: true },
-  { name: 'Demande de role', href: '/demande-de-role', current: false },
-  { name: 'Edition des roles', href: '/edition-des-roles', current: false },
-  { name: 'Demande de personne', href: '/demande-de-personne', current: false },
-]
+
 
 export default function NavBar() {
+  const pathname = usePathname()
+  console.log(pathname)
+  const navigation = [
+    { name: 'Home', href: '/internal', current: pathname === '/internal' },
+    { name: 'Demande de role', href: '/demande-de-role', current: pathname === '/demande-de-role' },
+    { name: 'Edition des roles', href: '/edition-des-roles', current: pathname === '/edition-des-roles' },
+    { name: 'Demande de personne', href: '/demande-de-personne', current: pathname === '/demande-de-personne' },
+  ]
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -36,13 +41,13 @@ export default function NavBar() {
                 <div className="flex shrink-0 items-center">
                   <Image
                     className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/Image/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={LogoIdea}
+                    alt="IDeA"
                   />
                   <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/Image/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
+                    src={LogoIdea}
+                    alt="IDeA"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -81,6 +86,8 @@ export default function NavBar() {
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
+                        width={32}
+                        height={32}
                       />
                     </Menu.Button>
                   </div>

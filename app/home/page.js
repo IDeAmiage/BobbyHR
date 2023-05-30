@@ -13,7 +13,7 @@ import SliderHome from "@/components/slider-home";
 import {useState} from "react";
 import Navbar from "@/components/home/navbar";
 
-const Home = () => {
+export default function CV() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -62,5 +62,3 @@ const Home = () => {
     </div>
   );
 }
-
-export default Home;

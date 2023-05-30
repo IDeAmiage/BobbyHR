@@ -1,17 +1,26 @@
-
-import Link from 'next/link';
 import Image from 'next/image'
-import logo from '@/public/image/idea-logo.png'
 import welcome from '@/public/image/welcome.jpeg'
 import NavBar from '@/components/nav-bar';
+import { read_last_sprint } from "@/lib/crud/sprintCrud";
+import {initPocketBaseSSR} from "@/lib/pocketbasessr";
 
+async function getLastSprint() {
+  return read_last_sprint();
+}
 
-export default function AccueilPage() {
+async function getSprint(pb, id) {
+  return await pb.collection('sprint').getOne(id, {});
+}
+
+export default async function AccueilPage() {
+  const pb = await initPocketBaseSSR();
+  const rolesData = getSprint(pb, '9jn3owq12h8c4i0');
+  const roles = await rolesData;
+  console.log(roles)
+
   return (
       <main className="flex flex-col bg-white_background_bobby">
         <NavBar/>
-
-        <br/>
 
         <div className="relative py-8">
             <Image className="w-full" src={welcome} alt="Bienvenue"/>
@@ -34,43 +43,7 @@ export default function AccueilPage() {
                     <div className="py-4 text-3xl font-semibold max-sm:text-2xl">SM</div>
                 </div>
             </div>
-
-            <div className="pt-11">
-                <div className="rounded-xl bg-[#E9E6E4] pl-6 text-2xl font-semibold text-[#63535B]"> MES TÂCHES </div>
-                <div className="">
-                    <table className="border-slate-500 w-full border-collapse border bg-[#CACACA]">
-                        <thead className="text-lg text-[#63535B]">
-                            <tr>
-                                <th className="border-slate-600 border px-5 py-1.5 font-normal">EN COURS</th>
-                                <th className="border-slate-600 border px-5 py-1.5 font-normal">DUREE ESTIMEE</th>
-                                <th className="border-slate-600 border px-5 py-1.5 font-normal">COMMENTAIRES</th>
-                            </tr>
-                        </thead>
-                        <tbody className="font-thin text-white">
-                            <tr>
-                                <td className="border-slate-600 border px-5 py-1.5">UI Page d&apos;accueil</td>
-                                <td className="border-slate-600 border px-5 py-1.5">7</td>
-                                <td className="border-slate-600 border px-5 py-1.5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                            <tr>
-                                <td className="border-slate-600 border px-5 py-1.5">UI Page d&apos;accueil</td>
-                                <td className="border-slate-600 border px-5 py-1.5">7</td>
-                                <td className="border-slate-600 border px-5 py-1.5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                            <tr>
-                                <td className="border-slate-600 border px-5 py-1.5">UI Page d&apos;accueil</td>
-                                <td className="border-slate-600 border px-5 py-1.5">7</td>
-                                <td className="border-slate-600 border px-5 py-1.5">Afficher nom projet, rôle, période, tâche</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
-
-        <footer>
-
-        </footer>
         </main>
   );
 }

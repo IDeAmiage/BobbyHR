@@ -3,17 +3,23 @@
 import pb from "@/lib/pocketbase";
 import { useForm } from "react-hook-form";
 import useLogin from "@/hooks/useLogin";
+import { useRouter } from "next/navigation";
 import { Lock, User } from "react-feather";
 
 const AuthUserForm = () => {
   const { register, handleSubmit, reset } = useForm();
   const { mutate: login, isLoading, isError } = useLogin();
-
+  const router = useRouter();
+  const redirect = () => {
+    router.push("/internal");
+}
   async function onSubmit(data) {
     login({ email: data.email, password: data.password });
 
     if (pb.authStore.isValid) {
+      console.log("cookie", pb.authStore.exportToCookie({ httpOnly: false }));
       document.cookie = pb.authStore.exportToCookie({ httpOnly: false });
+      redirect()
     }
 
     reset();
