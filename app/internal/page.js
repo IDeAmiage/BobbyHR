@@ -1,46 +1,47 @@
-import Image from 'next/image'
-import welcome from '@/public/image/welcome.jpeg'
-import NavBar from '@/components/nav-bar';
-import { read_last_sprint } from "@/lib/crud/sprintCrud";
 import {initPocketBaseSSR} from "@/lib/pocketbasessr";
-import {useRouter} from "next/navigation";
 
-async function getLastSprint() {
-  return read_last_sprint();
+async function getSprint(pb) {
+  const today = new Date().toISOString().slice(0, 10)
+  return await pb.collection('sprint').getList(1, 50, {
+    filter:  `dateDebChoix < '${today}' && dateDeb > '${today}'`,
+  });
 }
 
-async function getSprint(pb, id) {
-  return await pb.collection('sprint').getOne(id, {});
+async function getAffectation(pb) {
+  return await pb.collection('affectation').getFirstListItem(`id_personne='${pb.authStore.model.id}'`, {
+    expand: 'id_demande.id_role,id_demande.id_projet',
+  });
 }
 
 export default async function Internal() {
   const pb = await initPocketBaseSSR();
-  //const roles = await getSprint(pb, '9jn3owq12h8c4i0');
+  const sprint = await getSprint(pb);
+  const affectation = await getAffectation(pb);
+  const projet = affectation.expand.id_demande.expand.id_projet["nom"];
+  const role = affectation.expand.id_demande.expand.id_role["type_role"];
 
   return (
-      <main className="bg-white_background_bobby flex flex-col">
-        <div className="relative py-8">
-            <Image className="w-full" src={welcome} alt="Bienvenue"/>
-            <h1 className="place-self_center absolute left-1/2 top-1/2 mb-3 -translate-x-1/2 -translate-y-1/2 justify-items-center text-center font-serif text-5xl font-bold text-white max-sm:text-3xl"> Bienvenue Ziona !</h1>
-        </div>
+    <main className="flex h-screen flex-col bg-white_background_bobby">
+      <div className="m-10 flex flex-col items-center justify-center font-Playfair text-5xl font-bold">
+        Welcome {pb.authStore.model.username}
+      </div>
 
-        <div className="font-Playfair">
-
-            <div className="mx-6 grid grid-cols-3 gap-4 text-center">
-                <div className="flex-col rounded-xl bg-[#E9E6E4] text-[#63535B]">
-                    <div className="pt-2">PROJET</div>
-                    <div className="py-4 text-3xl font-semibold max-sm:text-2xl">Bobby HR</div>
-                </div>
-                <div className="rounded-xl bg-[#63535B] text-[#E9E6E4]">
-                    <div className="pt-2">SPRINT</div>
-                    <div className="py-4 text-3xl font-semibold max-sm:text-2xl">4</div>
-                </div>
-                <div className="rounded-xl bg-[#CACACA] text-[#63535B]">
-                    <div className="pt-2">RÔLE</div>
-                    <div className="py-4 text-3xl font-semibold max-sm:text-2xl">SM</div>
-                </div>
-            </div>
+      <div className="flex flex-col items-center px-10 font-Playfair">
+        <div className="mx-6 grid w-[80%] grid-rows-3 gap-4 text-center md:w-1/2 md:grid-cols-3">
+          <div className="flex-col rounded-xl bg-[#E9E6E4] text-[#63535B]">
+            <div className="pt-2 text-2xl">PROJET</div>
+            <div className="py-4 text-2xl font-semibold sm:text-3xl">{projet}</div>
+          </div>
+          <div className="rounded-xl bg-[#63535B] text-[#E9E6E4]">
+            <div className="pt-2 text-2xl">SPRINT</div>
+            <div className="py-4 text-2xl font-semibold sm:text-3xl">{sprint.items[0]["numSprint"]}</div>
+          </div>
+          <div className="rounded-xl bg-[#CACACA] text-[#63535B]">
+            <div className="pt-2 text-2xl">RÔLE</div>
+            <div className="py-4 text-2xl font-semibold sm:text-3xl">{role}</div>
+          </div>
         </div>
-        </main>
+      </div>
+    </main>
   );
 }

@@ -7,6 +7,7 @@ export default function useLogin() {
             email,
             password,
         );
+        document.cookie = pb.authStore.exportToCookie({ httpOnly: false });
     }
     return useMutation(login);
 }

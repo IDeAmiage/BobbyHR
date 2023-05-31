@@ -1,12 +1,9 @@
 import pb from '@/lib/pocketbase';
-import { useState } from 'react';
 
 export default function useLogout() {
-    const [dummy, setDummy] = useState(0);
-
     function logout() {
         pb.authStore.clear();
-        setDummy(Math.random());
+        document.cookie = 'pb_auth=; Max-Age=-99999999;';
     }
 
     return logout;

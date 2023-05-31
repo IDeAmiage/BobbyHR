@@ -41,7 +41,7 @@ const Benefits = (props) => {
 
             <div className="mt-5 w-full">
               {data.bullets.map((item) => (
-                <Benefit key={item} title={item.title} icon={item.icon}>
+                <Benefit key={item.title} title={item.title} icon={item.icon}>
                   {item.desc}
                 </Benefit>
               ))}
