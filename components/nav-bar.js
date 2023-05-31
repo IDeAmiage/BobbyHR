@@ -9,16 +9,14 @@ import { useRouter, usePathname } from 'next/navigation';
 import LogoIdea from '@/public/image/idea-logo.png'
 import cn from '@/lib/utils'
 
-
-
 export default function NavBar() {
   const pathname = usePathname()
   console.log(pathname)
   const navigation = [
     { name: 'Home', href: '/internal', current: pathname === '/internal' },
-    { name: 'Demande de role', href: '/demande-de-role', current: pathname === '/demande-de-role' },
-    { name: 'Edition des roles', href: '/edition-des-roles', current: pathname === '/edition-des-roles' },
-    { name: 'Demande de personne', href: '/demande-de-personne', current: pathname === '/demande-de-personne' },
+    { name: 'Demande de role', href: '/internal/demande-de-role', current: pathname === '/demande-de-role' },
+    { name: 'Edition des roles', href: '/internal/edition-des-roles', current: pathname === '/edition-des-roles' },
+    { name: 'Demande de personne', href: '/internal/demande-de-personne', current: pathname === '/demande-de-personne' },
   ]
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -82,13 +80,13 @@ export default function NavBar() {
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      <Image
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                        width={32}
-                        height={32}
-                      />
+                      {/*<Image*/}
+                      {/*  className="h-8 w-8 rounded-full"*/}
+                      {/*  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"*/}
+                      {/*  alt=""*/}
+                      {/*  width={32}*/}
+                      {/*  height={32}*/}
+                      {/*/>*/}
                     </Menu.Button>
                   </div>
                   <Transition

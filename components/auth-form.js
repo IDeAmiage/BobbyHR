@@ -12,7 +12,7 @@ const AuthUserForm = () => {
   const router = useRouter();
   const redirect = () => {
     router.push("/internal");
-}
+  }
   async function onSubmit(data) {
     login({ email: data.email, password: data.password });
 

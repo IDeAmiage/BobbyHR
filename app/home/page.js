@@ -20,7 +20,7 @@ export default function CV() {
     <div className="bg-white_background_bobby px-6">
       <Navbar />
       <div className="relative">
-        <div className="fixed right-0 top-0 h-20 w-20 rounded-bl-full bg-brown_bobby"/>
+        <div className="bg-brown_bobby fixed right-0 top-0 h-20 w-20 rounded-bl-full"/>
         <div className="fixed right-0 top-0 pr-4 pt-4">
           <div className="flex items-start justify-end">
             <button
