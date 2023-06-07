@@ -1,4 +1,4 @@
-import {AddButton, DeleteButton, EditButton} from "@/components/button-edit-role";
+import {AddButton, DeleteButton, EditButton} from "@/components/button-edit-projets";
 import {initPocketBaseSSR} from "@/lib/pocketbasessr";
 
 async function getProjets(pb) {
@@ -39,8 +39,8 @@ export default async function EditionProjetSSR() {
                 <td className="border-grey-light border-b px-6 py-4 normal-case">{projet.statutP}</td>
                 <td className="border-grey-light border-b px-6 py-4">
                   <div className="flex gap-4">
-                    <EditButton idRole={projet.id} typeRole={projet.nom}></EditButton>
-                    <DeleteButton idRole={projet.id} typeRole={projet.nom}></DeleteButton>
+                    <EditButton data={JSON.stringify(projet)}></EditButton>
+                    <DeleteButton data={JSON.stringify(projet)}></DeleteButton>
                   </div>
                 </td>
               </tr>
