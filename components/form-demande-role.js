@@ -2,8 +2,9 @@
 
 import pb from "@/lib/pocketbase";
 import {useForm} from "react-hook-form";
+import cn from '@/lib/utils'
 
-function FormsDemandeRole({ demande }) {
+function FormsDemandeRole({ demande, voted }) {
   const {register, handleSubmit, reset, watch } = useForm();
 
   const watchVoeux0 = watch("0-projet", Object.entries(JSON.parse(demande))[0][0]);
@@ -13,7 +14,6 @@ function FormsDemandeRole({ demande }) {
   const watchVoeux = [watchVoeux0, watchVoeux1, watchVoeux2];
 
   async function onSubmit(data) {
-
     const res = [];
     for (const [key, value] of Object.entries(data)) {
       const index = parseInt(key.split("-")[0]);
@@ -39,7 +39,8 @@ function FormsDemandeRole({ demande }) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex min-h-screen flex-col items-center justify-start gap-2 bg-white_background_bobby"
+      className={cn(voted ? "pointer-events-none" : ""
+        ,"flex min-h-screen flex-col items-center justify-start gap-2 bg-white_background_bobby")}
     >
       <div className="py-8">
         <h1 className="font-Playfair text-4xl font-extrabold text-black_bobby md:text-7xl">

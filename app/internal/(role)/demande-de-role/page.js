@@ -15,12 +15,19 @@ async function getDemande(pb, id_sprint) {
   });
 }
 
+async function isAlreadyVoted(pb) {
+  return await pb.collection('choix').getFullList(200, {
+    filter: `id_personne="${pb.authStore.model.id}"`
+  });
+}
+
 async function DemandeRoleSSR() {
   const pb = await initPocketBaseSSR();
 
   const sprint = await getSprint(pb);
-  const demande = await getDemande(pb, sprint.items[0]["id"]);
+  const isVoted = await isAlreadyVoted(pb);
 
+  const demande = await getDemande(pb, sprint.items[0]["id"]);
   const res = {};
   for (const [key, value] of Object.entries(demande)) {
     res[value.id_projet] = res[value.id_projet] || {};
@@ -35,7 +42,7 @@ async function DemandeRoleSSR() {
   }
 
   return (
-    <FormsDemandeRole demande={JSON.stringify(res)} />
+    <FormsDemandeRole demande={JSON.stringify(res)} voted={isVoted.length%3 === 0}/>
   );
 }
 
