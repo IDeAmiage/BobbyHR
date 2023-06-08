@@ -1,38 +1,46 @@
-'use client'
+'use client';
 import React, {Fragment, useState} from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from 'next/navigation';
-import {Dialog, Transition} from "@headlessui/react";
+import {useForm} from "react-hook-form";
+import {useRouter} from 'next/navigation';
+import {Dialog, Transition, Listbox} from "@headlessui/react";
 import pb from "@/lib/pocketbase";
+import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 
-async function updateRole(id, data) {
+const statut = [
+  { name: 'termine' },
+  { name: 'en cours' },
+  { name: 'prospection' },
+]
+
+async function updateProjet(id, data) {
   try {
-    const record = await pb.collection('role').update(id, data);
+    const record = await pb.collection('projet').update(id, data);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function addRole(data) {
+async function addProjet(data) {
   try {
-    const record = await pb.collection('role').create(data);
+    const record = await pb.collection('projet').create(data);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function deleteRole(id) {
+async function deleteProjet(id) {
   try {
-    const record = await pb.collection('role').delete(id);
+    const record = await pb.collection('projet').delete(id);
   } catch (error) {
     console.log(error);
   }
 }
 
 
-export function DeleteButton({ idRole, typeRole }) {
-  const { register, handleSubmit} = useForm();
+export function DeleteButton({data}) {
+  const {register, handleSubmit} = useForm();
   const router = useRouter();
+  const projet = JSON.parse(data);
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -44,11 +52,11 @@ export function DeleteButton({ idRole, typeRole }) {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-projets');
   }
 
   async function onSubmit() {
-    await deleteRole(idRole);
+    await deleteProjet(projet.id);
     closeModal();
     refreshData();
   }
@@ -82,7 +90,7 @@ export function DeleteButton({ idRole, typeRole }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black/25"/>
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -96,31 +104,33 @@ export function DeleteButton({ idRole, typeRole }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Supprimer le rôle &quot;{typeRole}&quot; ?
+                    Supprimer le projet &quot;{projet.nom}&quot; ?
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Êtes-vous sûr de vouloir supprimer le rôle &quot;{typeRole}&quot; ? Cette action est irréversible.
+                      Êtes-vous sûr de vouloir supprimer le projet &quot;{projet.nom}&quot; ? Cette action est
+                      irréversible.
                     </p>
                   </div>
 
 
+                  <div className="mt-4">
                     <div className="mt-4">
-                      <div className="mt-4">
-                        <button
-                          type="button"
-                          className="bg-blue-100 text-blue-900 hover:bg-blue-200 focus-visible:ring-blue-500 inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                          onClick={onSubmit}
-                        >
-                          Supprimer !
-                        </button>
-                      </div>
+                      <button
+                        type="button"
+                        className="bg-blue-100 text-blue-900 hover:bg-blue-200 focus-visible:ring-blue-500 inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                        onClick={onSubmit}
+                      >
+                        Supprimer !
+                      </button>
                     </div>
+                  </div>
 
                 </Dialog.Panel>
               </Transition.Child>
@@ -132,10 +142,11 @@ export function DeleteButton({ idRole, typeRole }) {
   );
 }
 
-export function EditButton({ idRole, typeRole }) {
-  const { register, handleSubmit} = useForm();
+export function EditButton({data}) {
+  const {register, handleSubmit} = useForm();
   const router = useRouter();
-  let [isOpen, setIsOpen] = useState(false)
+  const projet = JSON.parse(data);
+  const [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
@@ -146,14 +157,15 @@ export function EditButton({ idRole, typeRole }) {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-projets');
   }
 
   async function onSubmit(data) {
-    const role = {
-      "type_role": data.nom,
+    const updateData = {
+      "nom": data.nom,
+      "statutP": data.statutP,
     };
-    await updateRole(idRole, role);
+    await updateProjet(projet.id, updateData);
     closeModal();
     refreshData();
   }
@@ -187,7 +199,7 @@ export function EditButton({ idRole, typeRole }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black/25"/>
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -201,12 +213,13 @@ export function EditButton({ idRole, typeRole }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Editer le rôle &quot;{typeRole}&quot;
+                    Editer le projet &quot;{projet.id}&quot;
                   </Dialog.Title>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="pt-4">
@@ -218,8 +231,28 @@ export function EditButton({ idRole, typeRole }) {
                           type="text"
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Nom"
+                          defaultValue={projet.nom}
                           {...register("nom")}
                         />
+                      </div>
+                    </div>
+
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Nouveau statut
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <select {...register("statutP")}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                          {statut.map((statut, idx) => (
+                            <>
+                            {statut.name === projet.statutP ?
+                              <option selected value={statut.name} >{statut.name}</option>
+                              : <option value={statut.name}>{statut.name}</option>
+                            }
+                            </>
+                          ))}
+                        </select>
                       </div>
                     </div>
 
@@ -243,7 +276,7 @@ export function EditButton({ idRole, typeRole }) {
 }
 
 export function AddButton() {
-  const { register, handleSubmit} = useForm();
+  const {register, handleSubmit} = useForm();
   const router = useRouter();
   let [isOpen, setIsOpen] = useState(false)
 
@@ -256,14 +289,15 @@ export function AddButton() {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-projets');
   }
 
   async function onSubmit(data) {
-    const role = {
-      "type_role": data.nom
+    const addData = {
+      "nom": data.nom,
+      "statutP": data.statutP,
     };
-    await addRole(role);
+    await addProjet(addData);
     closeModal();
     refreshData();
   }
@@ -297,7 +331,7 @@ export function AddButton() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black/25"/>
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -311,7 +345,8 @@ export function AddButton() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -332,7 +367,19 @@ export function AddButton() {
                         />
                       </div>
                     </div>
-
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Choississez un statut
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <select {...register("statutP", {required: true})}
+                                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                          {statut.map((statut) => (
+                            <option selected value={statut.name} key={statut.name}>{statut.name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
                     <div className="mt-4">
                       <button
                         type="submit"

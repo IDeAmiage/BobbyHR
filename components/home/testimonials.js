@@ -13,7 +13,7 @@ const Testimonials  = () => {
         <div className="hover:-translate-y-1 lg:col-span-2 xl:col-auto">
           <div className="dark:bg-trueGray-800 flex h-full w-full flex-col justify-between rounded-2xl bg-gray-100 p-14">
             <p className="text-2xl leading-normal ">
-              Creation of a <Mark>dashboard</Mark>.
+              Create a visualization tool of the data of the cinema but also of its competitors on a regular and automated basis.
             </p>
             <Avatar
               image={cgr}
@@ -27,7 +27,6 @@ const Testimonials  = () => {
             <p className="text-2xl leading-normal ">
               Predict the number of visitor of the park by day or night.
             </p>
-
             <Avatar
               image={fou}
               name="Puy du Fou"
@@ -41,7 +40,6 @@ const Testimonials  = () => {
               Processing and analysis of data concerning matches and subscriptions through dashboards,
               and implementation of a customer typology.
             </p>
-
             <Avatar
               image={tfc}
               name="Toulouse Football Club"

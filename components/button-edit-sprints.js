@@ -1,38 +1,39 @@
-'use client'
+'use client';
 import React, {Fragment, useState} from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 import {Dialog, Transition} from "@headlessui/react";
 import pb from "@/lib/pocketbase";
 
-async function updateRole(id, data) {
+async function updateSprint(id, data) {
   try {
-    const record = await pb.collection('role').update(id, data);
+    const record = await pb.collection('sprint').update(id, data);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function addRole(data) {
+async function addSprint(data) {
   try {
-    const record = await pb.collection('role').create(data);
+    const record = await pb.collection('sprint').create(data);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function deleteRole(id) {
+async function deleteSprint(id) {
   try {
-    const record = await pb.collection('role').delete(id);
+    const record = await pb.collection('sprint').delete(id);
   } catch (error) {
     console.log(error);
   }
 }
 
 
-export function DeleteButton({ idRole, typeRole }) {
+export function DeleteButton({ data }) {
   const { register, handleSubmit} = useForm();
   const router = useRouter();
+  const sprint = JSON.parse(data);
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -44,11 +45,11 @@ export function DeleteButton({ idRole, typeRole }) {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-sprints');
   }
 
   async function onSubmit() {
-    await deleteRole(idRole);
+    await deleteSprint(sprint.id);
     closeModal();
     refreshData();
   }
@@ -101,11 +102,11 @@ export function DeleteButton({ idRole, typeRole }) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Supprimer le rôle &quot;{typeRole}&quot; ?
+                    Supprimer le sprint &quot;{sprint["numSprint"]}&quot; ?
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Êtes-vous sûr de vouloir supprimer le rôle &quot;{typeRole}&quot; ? Cette action est irréversible.
+                      Êtes-vous sûr de vouloir supprimer le sprint &quot;{sprint["numSprint"]}&quot; ? Cette action est irréversible.
                     </p>
                   </div>
 
@@ -132,10 +133,12 @@ export function DeleteButton({ idRole, typeRole }) {
   );
 }
 
-export function EditButton({ idRole, typeRole }) {
+export function EditButton({ data }) {
   const { register, handleSubmit} = useForm();
   const router = useRouter();
+  const sprint = JSON.parse(data);
   let [isOpen, setIsOpen] = useState(false)
+
 
   function closeModal() {
     setIsOpen(false)
@@ -146,14 +149,19 @@ export function EditButton({ idRole, typeRole }) {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-sprints');
   }
 
-  async function onSubmit(data) {
-    const role = {
-      "type_role": data.nom,
+  async function onSubmit(form) {
+    const updateData = {
+      "dateDeb": form.dateDeb,
+      "dateFin": form.dateFin,
+      "nbSeanceM1": form.nbSeanceM1,
+      "nbSeanceM2": form.nbSeanceM2,
+      "numSprint": form.numSprint,
+      "dateDebChoix": form.dateDebChoix,
     };
-    await updateRole(idRole, role);
+    await updateSprint(sprint.id, updateData);
     closeModal();
     refreshData();
   }
@@ -206,23 +214,87 @@ export function EditButton({ idRole, typeRole }) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Editer le rôle &quot;{typeRole}&quot;
+                    Editer le sprint &quot;{sprint.numSprint}&quot;
                   </Dialog.Title>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="pt-4">
                       <label className="block text-sm font-medium leading-6 text-gray-900">
-                        Nouveau nom
+                        Date de début
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
-                          type="text"
+                          type="date"
+                          defaultValue={new Date(sprint["dateDeb"]).toISOString().slice(0, 10)}
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          placeholder="Nom"
-                          {...register("nom")}
+                          {...register("dateDeb")}
                         />
                       </div>
                     </div>
-
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Date de fin
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="date"
+                          defaultValue={new Date(sprint["dateFin"]).toISOString().slice(0, 10)}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("dateFin")}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Nombre de séances de M1
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          defaultValue={sprint["nbSeanceM1"]}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("nbSeanceM1")}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Nombre de séances de M2
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          defaultValue={sprint["nbSeanceM2"]}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("nbSeanceM2")}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Numéro du sprint
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          defaultValue={sprint["numSprint"]}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("numSprint")}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Date de début des choix de rôle
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="date"
+                          defaultValue={new Date(sprint["dateDebChoix"]).toISOString().slice(0, 10)}
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("dateDebChoix")}
+                        />
+                      </div>
+                    </div>
                     <div className="mt-4">
                       <button
                         type="submit"
@@ -242,8 +314,9 @@ export function EditButton({ idRole, typeRole }) {
   );
 }
 
+
 export function AddButton() {
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit, formState: { errors }} = useForm();
   const router = useRouter();
   let [isOpen, setIsOpen] = useState(false)
 
@@ -256,14 +329,19 @@ export function AddButton() {
   }
 
   const refreshData = () => {
-    router.replace('/internal/edition-des-roles');
+    router.replace('/internal/edition-des-sprints');
   }
 
   async function onSubmit(data) {
-    const role = {
-      "type_role": data.nom
+    const addData = {
+      "dateDeb": form.dateDeb,
+      "dateFin": form.dateFin,
+      "nbSeanceM1": form.nbSeanceM1,
+      "nbSeanceM2": form.nbSeanceM2,
+      "numSprint": form.numSprint,
+      "dateDebChoix": form.dateDebChoix,
     };
-    await addRole(role);
+    await addSprint(addData);
     closeModal();
     refreshData();
   }
@@ -316,29 +394,91 @@ export function AddButton() {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Ajouter un rôle
+                    Ajouter un sprint
                   </Dialog.Title>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="pt-4">
                       <label className="block text-sm font-medium leading-6 text-gray-900">
-                        Nom du rôle
+                        Date de début
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <input
-                          type="text"
+                          type="date"
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          placeholder="Nom"
-                          {...register("nom", {required: true})}
+                          {...register("dateDeb", {required: true})}
+                        />
+
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Date de fin
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="date"
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("dateFin", {required: true})}
                         />
                       </div>
                     </div>
-
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Nombre de séances de M1
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          placeholder="Nombre"
+                          {...register("nbSeanceM1", {required: true})}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Nombre de séances de M2
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          placeholder="Nombre"
+                          {...register("nbSeanceM2", {required: true})}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Numéro du sprint
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          placeholder="Numéro"
+                          {...register("numSprint", {required: true})}
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4">
+                      <label className="block text-sm font-medium leading-6 text-gray-900">
+                        Date de début des choix de rôle
+                      </label>
+                      <div className="relative mt-2 rounded-md shadow-sm">
+                        <input
+                          type="date"
+                          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          {...register("dateDebChoix", {required: true})}
+                        />
+                      </div>
+                    </div>
                     <div className="mt-4">
                       <button
                         type="submit"
                         className="bg-blue-100 text-blue-900 hover:bg-blue-200 focus-visible:ring-blue-500 inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                       >
-                        Ajouter !
+                        Créer !
                       </button>
                     </div>
                   </form>
