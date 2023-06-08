@@ -7,9 +7,9 @@ import pb from "@/lib/pocketbase";
 import {CheckIcon, ChevronUpDownIcon} from "@heroicons/react/20/solid";
 
 const statut = [
-  { name: 'prospection' },
-  { name: 'en cours' },
   { name: 'termine' },
+  { name: 'en cours' },
+  { name: 'prospection' },
 ]
 
 async function updateProjet(id, data) {
@@ -147,7 +147,6 @@ export function EditButton({data}) {
   const router = useRouter();
   const projet = JSON.parse(data);
   const [isOpen, setIsOpen] = useState(false)
-  const [selected, setSelected] = useState(statut[0])
 
   function closeModal() {
     setIsOpen(false)
@@ -162,11 +161,11 @@ export function EditButton({data}) {
   }
 
   async function onSubmit(data) {
-    const role = {
+    const updateData = {
       "nom": data.nom,
       "statutP": data.statutP,
     };
-    await updateProjet(projet.id, role);
+    await updateProjet(projet.id, updateData);
     closeModal();
     refreshData();
   }
@@ -232,7 +231,7 @@ export function EditButton({data}) {
                           type="text"
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Nom"
-                          value={projet.nom}
+                          defaultValue={projet.nom}
                           {...register("nom")}
                         />
                       </div>
@@ -245,7 +244,7 @@ export function EditButton({data}) {
                       <div className="relative mt-2 rounded-md shadow-sm">
                         <select {...register("statutP")}
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                          {statut.map((statut) => (
+                          {statut.map((statut, idx) => (
                             <>
                             {statut.name === projet.statutP ?
                               <option selected value={statut.name} >{statut.name}</option>
@@ -294,11 +293,11 @@ export function AddButton() {
   }
 
   async function onSubmit(data) {
-    const role = {
+    const addData = {
       "nom": data.nom,
       "statutP": data.statutP,
     };
-    await addProjet(role);
+    await addProjet(addData);
     closeModal();
     refreshData();
   }
@@ -364,7 +363,7 @@ export function AddButton() {
                           type="text"
                           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           placeholder="Nom"
-                          {...register("nom")}
+                          {...register("nom", {required: true})}
                         />
                       </div>
                     </div>
@@ -373,7 +372,7 @@ export function AddButton() {
                         Choississez un statut
                       </label>
                       <div className="relative mt-2 rounded-md shadow-sm">
-                        <select {...register("statutP")}
+                        <select {...register("statutP", {required: true})}
                                 className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                           {statut.map((statut) => (
                             <option selected value={statut.name} key={statut.name}>{statut.name}</option>
