@@ -1,35 +1,41 @@
+version: "3"
+
+networks:
+  web:
+    external: true
+
 services:
-  reverse-proxy:
-    image: traefik:v2.10
-    command: --api.insecure=true --providers.docker
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
   frontend:
     container_name: frontend
     image: sharkyrekin/bobby-frontend:latest
     restart: unless-stopped
     build:
-        context: .
-        dockerfile: NextJS.Dockerfile
-    ports:
-      - "3000:3000"
+      context: .
+      dockerfile: NextJS.Dockerfile
+    networks:
+      - web
     labels:
-      - "traefik.http.routers.frontend.rule=Host(`idea-student.works`)"
+      - traefik.http.routers.frontend.rule=Host(`idea-student.works`)
+      - traefik.http.routers.frontend.tls=true
+      - traefik.http.routers.frontend.tls.certresolver=lets-encrypt
+      - traefik.http.services.frontend.loadbalancer.server.port=3000
+      - traefik.port=80
   backend:
     container_name: backend
     restart: unless-stopped
     build:
-        context: .
-        dockerfile: Pocketbase.Dockerfile
-    ports:
-      - "9090:9090"
+      context: .
+      dockerfile: Pocketbase.Dockerfile
+    networks:
+      - web
     labels:
-      - "traefik.http.routers.frontend.rule=Host(`pocketbase.idea-student.works`)"
+      - traefik.http.routers.backend.rule=Host(`pocketbase.idea-student.works`)
+      - traefik.http.routers.backend.tls=true
+      - traefik.http.routers.backend.tls.certresolver=lets-encrypt
+      - traefik.http.services.backend.loadbalancer.server.port=9090
+      - traefik.port=80
     healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      test: wget --no-verbose --tries=1 --spider http://localhost:9090/api/health || exit 1
       interval: 5s
       timeout: 5s
       retries: 5

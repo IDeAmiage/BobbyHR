@@ -1,0 +1,12 @@
+[http.middlewares.simpleAuth.basicAuth]
+users = [
+    "admin:$apr1$jhUqwlS9$XqcxoLp2ael68ICe1Otwi0"
+]
+
+[http.routers.api]
+rule = "Host(`monitor.idea-student.works`)"
+entrypoints = ["websecure"]
+middlewares = ["simpleAuth"]
+service = "api@internal"
+[http.routers.api.tls]
+certResolver = "lets-encrypt"

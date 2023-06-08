@@ -40,6 +40,10 @@ npm run dev
 Project available at: http://localhost:3000 </br>
 Be careful NextJS 13 is in beta, some features may not work.
 
+## Run
+
+https://www.digitalocean.com/community/tutorials/how-to-use-traefik-v2-as-a-reverse-proxy-for-docker-containers-on-ubuntu-20-04
+
 ## Help
 
 ### How to use Git
